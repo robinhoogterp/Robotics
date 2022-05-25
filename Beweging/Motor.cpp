@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	int pin = 1;
+	int pin = 13;
 	int pwmValue = 0;
 
 	wiringPiSetup();
