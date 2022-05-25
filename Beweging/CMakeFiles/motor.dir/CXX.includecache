@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/greppel/projects/Robotics/Beweging/Motor.cpp
+Motor.h
+/home/greppel/projects/Robotics/Beweging/Motor.h
+
+/home/greppel/projects/Robotics/Beweging/Motor.h
+iostream
+-
+wiringPi.h
+-
+softPwm.h
+-
+stdio.h
+-
+stdlib.h
+-
+stdint.h
+-
+

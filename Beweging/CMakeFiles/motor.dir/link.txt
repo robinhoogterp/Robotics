@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/motor.dir/Motor.cpp.o -o motor  -Wl,-rpath,/usr/local/lib /usr/local/lib/libwiringPi.so 

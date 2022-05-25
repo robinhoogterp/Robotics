@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	int pin = 13;
+	int pin = 23;
 	int pwmValue = 0;
 
 	wiringPiSetup();
@@ -16,7 +16,7 @@ int main()
 		std::cin >> pwmValue;
 
 		softPwmWrite(pin, pwmValue);
-		printf("Snelheid nu:", pwmValue);
+		cout<<"Snelheid nu:" << pwmValue << '\n';
 
 	}
 }
