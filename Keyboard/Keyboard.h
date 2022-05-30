@@ -6,4 +6,4 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <iostream>
-#include <windows.h>
+#include <conio.h>
