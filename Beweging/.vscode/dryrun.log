@@ -1,0 +1,22 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/greppel/projects/Robotics/Beweging'
+/usr/bin/cmake -S/home/greppel/projects/Robotics/Beweging -B/home/greppel/projects/Robotics/Beweging --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/greppel/projects/Robotics/Beweging/CMakeFiles /home/greppel/projects/Robotics/Beweging//CMakeFiles/progress.marks
+make -s -f CMakeFiles/Makefile2 all
+make[1]: Entering directory '/home/greppel/projects/Robotics/Beweging'
+make -s -f CMakeFiles/motor.dir/build.make CMakeFiles/motor.dir/depend
+make[2]: Entering directory '/home/greppel/projects/Robotics/Beweging'
+cd /home/greppel/projects/Robotics/Beweging && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/greppel/projects/Robotics/Beweging /home/greppel/projects/Robotics/Beweging /home/greppel/projects/Robotics/Beweging /home/greppel/projects/Robotics/Beweging /home/greppel/projects/Robotics/Beweging/CMakeFiles/motor.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/greppel/projects/Robotics/Beweging'
+make -s -f CMakeFiles/motor.dir/build.make CMakeFiles/motor.dir/build
+make[2]: Entering directory '/home/greppel/projects/Robotics/Beweging'
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/greppel/projects/Robotics/Beweging/CMakeFiles --progress-num=1 "Building CXX object CMakeFiles/motor.dir/Motor.cpp.o"
+/usr/bin/c++  -I/home/greppel/projects/Robotics/Beweging/.  -o CMakeFiles/motor.dir/Motor.cpp.o -c /home/greppel/projects/Robotics/Beweging/Motor.cpp
+/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/greppel/projects/Robotics/Beweging/CMakeFiles --progress-num=2 "Linking CXX executable motor"
+/usr/bin/cmake -E cmake_link_script CMakeFiles/motor.dir/link.txt --verbose=
+make[2]: Leaving directory '/home/greppel/projects/Robotics/Beweging'
+/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/greppel/projects/Robotics/Beweging/CMakeFiles --progress-num=1,2 "Built target motor"
+make[1]: Leaving directory '/home/greppel/projects/Robotics/Beweging'
+/usr/bin/cmake -E cmake_progress_start /home/greppel/projects/Robotics/Beweging/CMakeFiles 0
+make: Leaving directory '/home/greppel/projects/Robotics/Beweging'
+ 
