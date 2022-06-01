@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jun  1 11:27:44 2022
+# Make data base, printed on Wed Jun  1 15:26:16 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f26262fe-5fa0-4f55-a620-cfbcd3b756a8.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6456dfc4-6d6f-4a50-841f-445968dd66d0.sock
 # environment
 VSCODE_CWD = /home/greppel
 # environment
@@ -69,11 +69,11 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-A3AgxF8eO08N/agent.585
+SSH_AUTH_SOCK = /tmp/ssh-LqDTKCM2unu2/agent.583
 # default
 .SHELLFLAGS := -c
 # environment
-_LXSESSION_PID = 585
+_LXSESSION_PID = 583
 # environment
 XDG_CONFIG_DIRS = /etc/xdg
 # automatic
@@ -83,13 +83,13 @@ XDG_SESSION_DESKTOP = lightdm-xsession
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST := Makefile
 # makefile (from 'Makefile', line 73)
-CMAKE_BINARY_DIR = /home/greppel/projects/MyDynamixel
+CMAKE_BINARY_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # automatic
 @F = $(notdir $@)
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 5752
+VSCODE_PID = 1173
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -97,7 +97,7 @@ XDG_SESSION_TYPE = x11
 # environment
 SAL_USE_VCLPLUGIN = gtk3
 # makefile (from 'Makefile', line 70)
-CMAKE_SOURCE_DIR = /home/greppel/projects/MyDynamixel
+CMAKE_SOURCE_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # automatic
 *F = $(notdir $*)
 # environment
@@ -169,7 +169,7 @@ USER = greppel
 # default
 MAKE_VERSION := 4.3
 # environment
-SSH_AGENT_PID = 644
+SSH_AGENT_PID = 642
 # makefile (from 'Makefile', line 44)
 MAKESILENT = -s
 # environment
@@ -257,7 +257,6 @@ main.cpp.o:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 178):
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/main.cpp.o
- 
 
 edit_cache/fast: edit_cache
 #  Phony target (prerequisite of .PHONY).
@@ -276,7 +275,7 @@ Test: cmake_check_build_system
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-01 10:35:01.186713
+#  Last modified 2022-06-01 15:16:37.188983712
 #  File has been updated.
 #  Successfully updated.
 
@@ -289,6 +288,7 @@ rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
 	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 
+ 
 ServoClass.cpp.i:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -407,9 +407,9 @@ all: cmake_check_build_system
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 #  recipe to execute (from 'Makefile', line 102):
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/greppel/projects/MyDynamixel/CMakeFiles /home/greppel/projects/MyDynamixel//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles /home/greppel/projects/Robotics/ServoMotor/MyDynamixel//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/greppel/projects/MyDynamixel/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles 0
 
 help:
 #  Phony target (prerequisite of .PHONY).
@@ -532,6 +532,6 @@ ServoClass.cpp.s:
 # strcache performance: lookups = 202 / hit rate = 69%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=0/202=0%
-# Finished Make data base on Wed Jun  1 11:27:44 2022
+# Finished Make data base on Wed Jun  1 15:26:16 2022
 
  

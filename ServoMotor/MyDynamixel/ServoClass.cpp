@@ -25,7 +25,7 @@ void Servo::CreateConnection(){
 
 
 
-int Servo::CalculateChecksum(int id, int length,int inst, int param1, int param2,int param3 = 0){
+int Servo::CalculateChecksum(int id, int length,int inst, int param1 = 0, int param2 = 0,int param3 = 0){
   int temp = id + length + inst + param1 + param2 + param3;
   int temp2 = temp &  0xFF;
 
@@ -38,7 +38,7 @@ int Servo::Read(int address)
     int length  =  0x04;
     int inst    =  0x02;
     int addr    =  address;
-    int parm1   =  0xFF;
+    int parm1   =  0x02;
     int chksum;
     chksum  = Servo::CalculateChecksum(ID,length,inst,addr,parm1);
     int instruction[] = {HEADER,HEADER,ID,length,inst,addr,parm1,chksum};
@@ -46,6 +46,22 @@ int Servo::Read(int address)
     Servo::SendPacket(instruction, count);
     int result = Servo::HandleError();
     return result;
+}
+
+void Servo::Reboot(){
+    int ID      =  Servo::id;
+    int length  =  0x02;
+    int inst    =  0x08;
+    
+    int chksum;
+ 
+    chksum  = Servo::CalculateChecksum(ID,length,inst);
+    int instruction[] = {HEADER,HEADER,ID,length,inst,chksum};
+    size_t count = sizeof(instruction)/4;
+
+    Servo::SendPacket(instruction, count);
+    Servo::HandleError();
+
 }
 
 
@@ -89,7 +105,6 @@ int Servo::HandleError()
    if(a >> 6 & 1){
     std::cout << "Instruction Error" << '\n';
   }
-  
   if(count == 8){
     std::cout << "test";
     int a = (int) serialGetchar(fs);
@@ -125,11 +140,10 @@ void Servo::SendPacket(int instruction[], int count){
     digitalWrite(17,HIGH);  
     for(int i =0; i < count; ++i)
     {
- 
       serialPutchar(fs,instruction[i]);
     }
       
-    delayMicroseconds(500);
+    delayMicroseconds(400);
     digitalWrite(17,LOW);
     delayMicroseconds(900);
      

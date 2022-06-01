@@ -6,23 +6,23 @@
 
 #IncludeRegexTransform: 
 
+/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/ServoClass.cpp
+ServoClass.h
+/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/ServoClass.h
+iostream
+-
+termios.h
+-
+math.h
+-
+unistd.h
+-
+fstream
+-
+
 /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/ServoClass.h
 wiringPi.h
 /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/wiringPi.h
 wiringSerial.h
 /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/wiringSerial.h
-
-/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/main.cpp
-main.h
-/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/main.h
-iostream
--
-cstdio
--
-
-/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/main.h
-wiringPi.h
-/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/wiringPi.h
-ServoClass.h
-/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/ServoClass.h
 

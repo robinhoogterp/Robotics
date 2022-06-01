@@ -1,6 +1,7 @@
 #include "main.h"
 #include <iostream>
 #include <cstdio>
+#include <stdio.h>
 
 
 int main()
@@ -11,39 +12,20 @@ int main()
     Servo testservo2(2);
     while (true)
     {
-        std::cout << "hallo";
-        testservo2.ChangePos(800);
-        int a = testservo2.Read(36);
-        std::cout << a;
-        delay(50); 
-       // testservo2.ChangePos(400);
+        testservo2.Reboot();
+        testservo2.ChangePos(200);
+        int b = testservo2.Read(40);
+        std::cout << "pos:  " << b << "\n";
+
         delay(2000); 
-        testservo2.ChangePos(1000);
-        delay(50);
-        //testservo.ChangePos(1000);
+       
+        testservo2.ChangePos(800);
+         int a = testservo2.Read(40);
+        std::cout << "pos:  " << a << "\n";
+        
         delay(2000);
 
-        // int delaytime =250;
-        //  Servo::ChangePos(100);
-        //  delay(delaytime);
-        //  Servo::ChangePos(200);
-        //  delay(delaytime); 
-        //  Servo::ChangePos(300);
-        //  delay(delaytime);
-        //  Servo::ChangePos(400);
-        //  delay(delaytime);  
-        //  Servo::ChangePos(500);
-        //  delay(delaytime);
-        //  Servo::ChangePos(600);
-        //  delay(delaytime);
-        //  Servo::ChangePos(700);
-        //  delay(delaytime);
-        //  Servo::ChangePos(800);
-        //  delay(delaytime);
-        //  Servo::ChangePos(900);
-        //  delay(delaytime);
-        //  Servo::ChangePos(1000);
-        //  delay(2000); 
+        
          
     }
     
