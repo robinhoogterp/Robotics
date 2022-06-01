@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/Test.dir/main.cpp.o CMakeFiles/Test.dir/ServoClass.cpp.o -o Test  -Wl,-rpath,/usr/local/lib /usr/local/lib/libwiringPi.so 
