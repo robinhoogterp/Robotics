@@ -43,6 +43,43 @@ int Servo::CalculateChecksum(int id, int length,int inst, int param1, int param2
 }
 */
 
+void Servo::SyncWrite()
+{
+ 
+  
+}
+
+void Servo::HandleError()
+{
+  serialGetchar(fs);
+  serialGetchar(fs);
+  serialGetchar(fs);
+  serialGetchar(fs);
+  char a = serialGetchar(fs);
+  if(a & 1){
+    std::cout << "Input voltage Error";
+  }
+   if(a >> 1 & 1){
+    std::cout << "Angle limit Error";
+  }
+   if(a >> 2 & 1){
+    std::cout << "Overheating Error";
+  }
+   if(a >> 3 & 1){
+    std::cout << "Range Error";
+  }
+   if(a >> 4 & 1){
+    std::cout << "Cheksum Error";
+  }
+   if(a >> 5 & 1){
+    std::cout << "Overload Error";
+  }
+   if(a >> 6 & 1){
+    std::cout << "Instruction Error";
+  }
+
+}
+
 void Servo::ChangePos(int pos)
 {
     std::cout << (char) 0;
@@ -51,20 +88,9 @@ void Servo::ChangePos(int pos)
     char length  =  (char)0x05;
     char inst    =  (char)0x03;
     char addr    =  (char)0x1E;
-    // char parm1; 
-    // char parm2;  
     char parm1 =  (char)(pos & 0xff);
     char parm2 = (char)(pos >> 8);
     int chksum;
-    // if(pos == 0) {
-    //    parm1   =  (char)100;
-    //    parm2   =  (char)0x00;
-      
-    // }
-    // else{
-    //   parm1   =  (char)200;
-    //   parm2   =  (char)0x00;
-    // }
  
  
     chksum  = Servo::CalculateChecksum(ID,length,inst,addr,parm1,parm2);
@@ -74,25 +100,13 @@ void Servo::ChangePos(int pos)
        {
          serialPutchar(fs,instruction[i]);
        }
-     //serialPuts(fs, instruction);
+      
       delayMicroseconds(500);
-     digitalWrite(17,LOW);
+      digitalWrite(17,LOW);
       delayMicroseconds(500);
-  
+      Servo::HandleError();
+    
      std::cout<<std::hex<<header<<"  "<<header<<"  "<<ID<<"  "<<length<<"  "<<inst<<"  "<<addr<<"  "<<parm1<<"  "<<parm2<<"  "<<chksum<<'\n';
-     //std::ofstream out("output.txt");
-     //out <<header<<"  "<<header<<"  "<<ID<<"  "<<length<<"  "<<inst<<"  "<<addr<<"  "<<parm1<<"  "<<parm2<<"  "<<chksum<<'\n';
-     //out.close();
-     //delay(5000);
-    //std::cout<<std::hex<<parm2<<'\n';
-    // std::cout<<"ERROR Message" <<'\n';
-    // std::cout<< std::hex << serialGetchar(fs)<<"Header1"<<'\n';
-    // std::cout<< std::hex << serialGetchar(fs)<<"Header2"<<'\n';
-    // std::cout<< std::hex << serialGetchar(fs)<<"PacketID"<<'\n';
-    // std::cout<< std::hex << serialGetchar(fs)<<"Length"<<'\n';
-    // std::cout<< std::hex << serialGetchar(fs)<<"Error"<<'\n';
-    // std::cout<< std::hex << serialGetchar(fs)<<"Checksum"<<'\n';
-    // std::cout<<"New Message" <<'\n';
     
 }
 
