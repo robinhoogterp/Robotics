@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/greppel/projects/MyDynamixel
+CMAKE_SOURCE_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/greppel/projects/MyDynamixel
+CMAKE_BINARY_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Test.dir/depend.make
@@ -78,29 +78,29 @@ include CMakeFiles/Test.dir/flags.make
 
 CMakeFiles/Test.dir/main.cpp.o: CMakeFiles/Test.dir/flags.make
 CMakeFiles/Test.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/greppel/projects/MyDynamixel/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Test.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Test.dir/main.cpp.o -c /home/greppel/projects/MyDynamixel/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Test.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Test.dir/main.cpp.o -c /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/main.cpp
 
 CMakeFiles/Test.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Test.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/greppel/projects/MyDynamixel/main.cpp > CMakeFiles/Test.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/main.cpp > CMakeFiles/Test.dir/main.cpp.i
 
 CMakeFiles/Test.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Test.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/greppel/projects/MyDynamixel/main.cpp -o CMakeFiles/Test.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/main.cpp -o CMakeFiles/Test.dir/main.cpp.s
 
 CMakeFiles/Test.dir/ServoClass.cpp.o: CMakeFiles/Test.dir/flags.make
 CMakeFiles/Test.dir/ServoClass.cpp.o: ServoClass.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/greppel/projects/MyDynamixel/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Test.dir/ServoClass.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Test.dir/ServoClass.cpp.o -c /home/greppel/projects/MyDynamixel/ServoClass.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Test.dir/ServoClass.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Test.dir/ServoClass.cpp.o -c /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/ServoClass.cpp
 
 CMakeFiles/Test.dir/ServoClass.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Test.dir/ServoClass.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/greppel/projects/MyDynamixel/ServoClass.cpp > CMakeFiles/Test.dir/ServoClass.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/ServoClass.cpp > CMakeFiles/Test.dir/ServoClass.cpp.i
 
 CMakeFiles/Test.dir/ServoClass.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Test.dir/ServoClass.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/greppel/projects/MyDynamixel/ServoClass.cpp -o CMakeFiles/Test.dir/ServoClass.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/ServoClass.cpp -o CMakeFiles/Test.dir/ServoClass.cpp.s
 
 # Object files for target Test
 Test_OBJECTS = \
@@ -115,7 +115,7 @@ Test: CMakeFiles/Test.dir/ServoClass.cpp.o
 Test: CMakeFiles/Test.dir/build.make
 Test: /usr/local/lib/libwiringPi.so
 Test: CMakeFiles/Test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/greppel/projects/MyDynamixel/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -128,6 +128,6 @@ CMakeFiles/Test.dir/clean:
 .PHONY : CMakeFiles/Test.dir/clean
 
 CMakeFiles/Test.dir/depend:
-	cd /home/greppel/projects/MyDynamixel && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/greppel/projects/MyDynamixel /home/greppel/projects/MyDynamixel /home/greppel/projects/MyDynamixel /home/greppel/projects/MyDynamixel /home/greppel/projects/MyDynamixel/CMakeFiles/Test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/greppel/projects/Robotics/ServoMotor/MyDynamixel && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles/Test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Test.dir/depend
 

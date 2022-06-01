@@ -1,4 +1,4 @@
-# Install script for directory: /home/greppel/projects/MyDynamixel/wiringPi
+# Install script for directory: /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/wiringPi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

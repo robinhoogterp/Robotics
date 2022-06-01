@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 31 15:53:55 2022
+# Make data base, printed on Wed Jun  1 11:27:44 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-72fa7d96-7d4a-488d-8f4c-afb484133ecd.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f26262fe-5fa0-4f55-a620-cfbcd3b756a8.sock
 # environment
 VSCODE_CWD = /home/greppel
 # environment
@@ -31,7 +31,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/greppel/projects/MyDynamixel
+PWD = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -59,7 +59,7 @@ CMAKE_COMMAND = /usr/bin/cmake
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/greppel/projects/MyDynamixel
+CURDIR := /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -89,7 +89,7 @@ CMAKE_BINARY_DIR = /home/greppel/projects/MyDynamixel
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 2304
+VSCODE_PID = 5752
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -215,7 +215,7 @@ GDMSESSION = lightdm-xsession
 
 # RCS: could not be stat'd.
 # SCCS: could not be stat'd.
-# . (device 45826, inode 262776): 17 files, no impossibilities.
+# . (device 45826, inode 394360): 17 files, no impossibilities.
 
 # 17 files, no impossibilities in 3 directories.
 
@@ -257,6 +257,7 @@ main.cpp.o:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 178):
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/main.cpp.o
+ 
 
 edit_cache/fast: edit_cache
 #  Phony target (prerequisite of .PHONY).
@@ -275,7 +276,7 @@ Test: cmake_check_build_system
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-31 15:38:54.869999289
+#  Last modified 2022-06-01 10:35:01.186713
 #  File has been updated.
 #  Successfully updated.
 
@@ -531,6 +532,6 @@ ServoClass.cpp.s:
 # strcache performance: lookups = 202 / hit rate = 69%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=0/202=0%
-# Finished Make data base on Tue May 31 15:53:55 2022
+# Finished Make data base on Wed Jun  1 11:27:44 2022
 
  

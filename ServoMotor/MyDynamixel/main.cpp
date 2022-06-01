@@ -3,7 +3,6 @@
 #include <cstdio>
 
 
-
 int main()
 {
     Servo::InitPins();
@@ -12,15 +11,17 @@ int main()
     Servo testservo2(2);
     while (true)
     {
-       
-        testservo.ChangePos(400);
+        std::cout << "hallo";
+        testservo2.ChangePos(800);
+        int a = testservo2.Read(36);
+        std::cout << a;
         delay(50); 
-        testservo2.ChangePos(400);
-        delay(1000); 
-        testservo2.ChangePos(600);
+       // testservo2.ChangePos(400);
+        delay(2000); 
+        testservo2.ChangePos(1000);
         delay(50);
-        testservo.ChangePos(600);
-        delay(1000);
+        //testservo.ChangePos(1000);
+        delay(2000);
 
         // int delaytime =250;
         //  Servo::ChangePos(100);
