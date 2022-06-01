@@ -1,64 +1,42 @@
 #include "Keyboard.h"
+#include "timercpp.h"
 
-int main(void)
+using namespace std;
+
+int main()
 {
-	int pin = 23;
+	int pin = 26;
 	int pin_forward = 27;
 	int pin_backwards = 28;
-	int pwm_pin = 0;
 	int pwmValue = 0;
-
-	char ch;
-	ch = _getch();
+	
+	int throttle;
 
 
 	wiringPiSetup();
 	softPwmCreate(pin, 0, 100);
+	pinMode(pin_forward,OUTPUT);
+	pinMode(pin_backwards,OUTPUT);
+	
+	std::cout << "Percentage vooruit";
+	std::cin >> throttle;
+		
+	Timer t;
 
-	std::cout << "Gebruik W of S om te rijden" << std::endl;
-			for (pins = 0; pins < 2; ++pins)
-			{
-				digitalWrite(pin_forward, 0);
-				digitalWrite(pin_backwards, 0);
-			}
+    t.setInterval([&]() {
+    digitalWrite(pin_forward, 1);
+	digitalWrite(pin_backwards, 0);
+	softPwmWrite(pin, pwmValue+=5);
+		cout << "Snelheid nu:" << pwmValue << endl;
+    }, 100); 
 
-			while (true)
-			{
-			if (ch == 'w') {
-
-				digitalWrite(pin_forward, 1);
-				digitalWrite(pin_backwards, 0);
-
-				pwmValue += 10;
-				if (pwmValue > 100)
-					pwmValue = 100;
-
-				softPwmWrite(pwm_pin, pwmValue);
-				delay(2);
-			}
-
-			if (ch == 's') {
-				digitalWrite(pin_forward, 0);
-				digitalWrite(pin_backwards, 1);
-
-				pwmValue -= 10;
-				if (pwmValue < 0)
-					pwmValue = 0;
-
-				softPwmWrite(pwm_pin, pwmValue);
-
-				delay(2;
-			}
+    t.setTimeout([&]() {
+        cout << "Stoppen" << endl;
+        t.stop();
+    digitalWrite(pin_forward, 0);
+	digitalWrite(pin_backwards, 0);
+    }, 3000); 
 
 
-			if (ch == '') {
-				digitalWrite(pin_forward, 0);
-				digitalWrite(pin_backwards, 0);
-
-				pwmValue = 0;
-
-				softPwmWrite(pwm_pin, pwmValue);
-
-		};
-	return 0;
+    while(true); // Keep main thread active
 }
