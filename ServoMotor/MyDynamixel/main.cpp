@@ -12,16 +12,16 @@ int main()
     Servo testservo2(2);
     while (true)
     {
-        testservo2.Reboot();
+        //testservo2.Reboot();
         testservo2.ChangePos(200);
-        int b = testservo2.Read(40);
-        std::cout << "pos:  " << b << "\n";
+        int b = testservo2.Read(34);
+        //std::cout << "pos:  " << b << "\n";
 
         delay(2000); 
        
         testservo2.ChangePos(800);
-         int a = testservo2.Read(40);
-        std::cout << "pos:  " << a << "\n";
+         int a = testservo2.Read(34);
+        //std::cout << "pos:  " << a << "\n";
         
         delay(2000);
 

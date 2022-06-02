@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jun  1 15:26:16 2022
+# Make data base, printed on Wed Jun  1 16:09:51 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6456dfc4-6d6f-4a50-841f-445968dd66d0.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f3d29da3-afc8-4701-9796-9e6b7c77c49f.sock
 # environment
 VSCODE_CWD = /home/greppel
 # environment
@@ -69,11 +69,11 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-LqDTKCM2unu2/agent.583
+SSH_AUTH_SOCK = /tmp/ssh-OLnlVAXjZH9n/agent.580
 # default
 .SHELLFLAGS := -c
 # environment
-_LXSESSION_PID = 583
+_LXSESSION_PID = 580
 # environment
 XDG_CONFIG_DIRS = /etc/xdg
 # automatic
@@ -89,7 +89,7 @@ CMAKE_BINARY_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 1173
+VSCODE_PID = 960
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -169,7 +169,7 @@ USER = greppel
 # default
 MAKE_VERSION := 4.3
 # environment
-SSH_AGENT_PID = 642
+SSH_AGENT_PID = 639
 # makefile (from 'Makefile', line 44)
 MAKESILENT = -s
 # environment
@@ -275,12 +275,13 @@ Test: cmake_check_build_system
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-01 15:16:37.188983712
+#  Last modified 2022-06-01 15:48:35.447732611
 #  File has been updated.
 #  Successfully updated.
 
 rebuild_cache:
 #  Phony target (prerequisite of .PHONY).
+ 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -288,7 +289,6 @@ rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
 	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 
- 
 ServoClass.cpp.i:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -532,6 +532,6 @@ ServoClass.cpp.s:
 # strcache performance: lookups = 202 / hit rate = 69%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=0/202=0%
-# Finished Make data base on Wed Jun  1 15:26:16 2022
+# Finished Make data base on Wed Jun  1 16:09:51 2022
 
  
