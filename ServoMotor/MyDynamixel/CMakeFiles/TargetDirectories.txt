@@ -1,5 +1,5 @@
-/home/greppel/projects/MyDynamixel/CMakeFiles/rebuild_cache.dir
-/home/greppel/projects/MyDynamixel/CMakeFiles/edit_cache.dir
-/home/greppel/projects/MyDynamixel/CMakeFiles/Test.dir
-/home/greppel/projects/MyDynamixel/wiringPi/CMakeFiles/rebuild_cache.dir
-/home/greppel/projects/MyDynamixel/wiringPi/CMakeFiles/edit_cache.dir
+/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles/rebuild_cache.dir
+/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles/edit_cache.dir
+/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles/Test.dir
+/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/wiringPi/CMakeFiles/rebuild_cache.dir
+/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/wiringPi/CMakeFiles/edit_cache.dir

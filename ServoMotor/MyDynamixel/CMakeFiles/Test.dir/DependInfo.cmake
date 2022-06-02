@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/greppel/projects/MyDynamixel/ServoClass.cpp" "/home/greppel/projects/MyDynamixel/CMakeFiles/Test.dir/ServoClass.cpp.o"
-  "/home/greppel/projects/MyDynamixel/main.cpp" "/home/greppel/projects/MyDynamixel/CMakeFiles/Test.dir/main.cpp.o"
+  "/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/ServoClass.cpp" "/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles/Test.dir/ServoClass.cpp.o"
+  "/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/main.cpp" "/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles/Test.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

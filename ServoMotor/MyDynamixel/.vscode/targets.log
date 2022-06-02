@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 31 15:53:55 2022
+# Make data base, printed on Thu Jun  2 09:50:52 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-72fa7d96-7d4a-488d-8f4c-afb484133ecd.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-181c83ce-a757-4e9f-9274-5eeeded15a65.sock
 # environment
 VSCODE_CWD = /home/greppel
 # environment
@@ -31,7 +31,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/greppel/projects/MyDynamixel
+PWD = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -59,7 +59,7 @@ CMAKE_COMMAND = /usr/bin/cmake
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/greppel/projects/MyDynamixel
+CURDIR := /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -69,11 +69,11 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-A3AgxF8eO08N/agent.585
+SSH_AUTH_SOCK = /tmp/ssh-baxO96bfIGMY/agent.584
 # default
 .SHELLFLAGS := -c
 # environment
-_LXSESSION_PID = 585
+_LXSESSION_PID = 584
 # environment
 XDG_CONFIG_DIRS = /etc/xdg
 # automatic
@@ -83,13 +83,13 @@ XDG_SESSION_DESKTOP = lightdm-xsession
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST := Makefile
 # makefile (from 'Makefile', line 73)
-CMAKE_BINARY_DIR = /home/greppel/projects/MyDynamixel
+CMAKE_BINARY_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # automatic
 @F = $(notdir $@)
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 2304
+VSCODE_PID = 1174
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -97,7 +97,7 @@ XDG_SESSION_TYPE = x11
 # environment
 SAL_USE_VCLPLUGIN = gtk3
 # makefile (from 'Makefile', line 70)
-CMAKE_SOURCE_DIR = /home/greppel/projects/MyDynamixel
+CMAKE_SOURCE_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # automatic
 *F = $(notdir $*)
 # environment
@@ -169,7 +169,7 @@ USER = greppel
 # default
 MAKE_VERSION := 4.3
 # environment
-SSH_AGENT_PID = 644
+SSH_AGENT_PID = 648
 # makefile (from 'Makefile', line 44)
 MAKESILENT = -s
 # environment
@@ -215,7 +215,7 @@ GDMSESSION = lightdm-xsession
 
 # RCS: could not be stat'd.
 # SCCS: could not be stat'd.
-# . (device 45826, inode 262776): 17 files, no impossibilities.
+# . (device 45826, inode 394360): 17 files, no impossibilities.
 
 # 17 files, no impossibilities in 3 directories.
 
@@ -275,7 +275,8 @@ Test: cmake_check_build_system
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-31 15:38:54.869999289
+ 
+#  Last modified 2022-06-02 09:47:23.027869029
 #  File has been updated.
 #  Successfully updated.
 
@@ -406,9 +407,9 @@ all: cmake_check_build_system
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 #  recipe to execute (from 'Makefile', line 102):
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/greppel/projects/MyDynamixel/CMakeFiles /home/greppel/projects/MyDynamixel//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles /home/greppel/projects/Robotics/ServoMotor/MyDynamixel//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/greppel/projects/MyDynamixel/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles 0
 
 help:
 #  Phony target (prerequisite of .PHONY).
@@ -531,6 +532,6 @@ ServoClass.cpp.s:
 # strcache performance: lookups = 202 / hit rate = 69%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=0/202=0%
-# Finished Make data base on Tue May 31 15:53:55 2022
+# Finished Make data base on Thu Jun  2 09:50:52 2022
 
  

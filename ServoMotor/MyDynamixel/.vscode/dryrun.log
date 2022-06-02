@@ -1,25 +1,26 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/greppel/projects/MyDynamixel'
-/usr/bin/cmake -S/home/greppel/projects/MyDynamixel -B/home/greppel/projects/MyDynamixel --check-build-system CMakeFiles/Makefile.cmake 0
-/usr/bin/cmake -E cmake_progress_start /home/greppel/projects/MyDynamixel/CMakeFiles /home/greppel/projects/MyDynamixel//CMakeFiles/progress.marks
+make: Entering directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
+/usr/bin/cmake -S/home/greppel/projects/Robotics/ServoMotor/MyDynamixel -B/home/greppel/projects/Robotics/ServoMotor/MyDynamixel --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles /home/greppel/projects/Robotics/ServoMotor/MyDynamixel//CMakeFiles/progress.marks
 make -s -f CMakeFiles/Makefile2 all
-make[1]: Entering directory '/home/greppel/projects/MyDynamixel'
+make[1]: Entering directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
 make -s -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/depend
  
-make[2]: Entering directory '/home/greppel/projects/MyDynamixel'
-cd /home/greppel/projects/MyDynamixel && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/greppel/projects/MyDynamixel /home/greppel/projects/MyDynamixel /home/greppel/projects/MyDynamixel /home/greppel/projects/MyDynamixel /home/greppel/projects/MyDynamixel/CMakeFiles/Test.dir/DependInfo.cmake --color=
-make[2]: Leaving directory '/home/greppel/projects/MyDynamixel'
+make[2]: Entering directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
+cd /home/greppel/projects/Robotics/ServoMotor/MyDynamixel && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles/Test.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
 make -s -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/build
-make[2]: Entering directory '/home/greppel/projects/MyDynamixel'
-/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/greppel/projects/MyDynamixel/CMakeFiles --progress-num=1 "Building CXX object CMakeFiles/Test.dir/main.cpp.o"
-/usr/bin/c++  -I/home/greppel/projects/MyDynamixel/.  -o CMakeFiles/Test.dir/main.cpp.o -c /home/greppel/projects/MyDynamixel/main.cpp
-/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/greppel/projects/MyDynamixel/CMakeFiles --progress-num=2 "Building CXX object CMakeFiles/Test.dir/ServoClass.cpp.o"
-/usr/bin/c++  -I/home/greppel/projects/MyDynamixel/.  -o CMakeFiles/Test.dir/ServoClass.cpp.o -c /home/greppel/projects/MyDynamixel/ServoClass.cpp
-/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/greppel/projects/MyDynamixel/CMakeFiles --progress-num=3 "Linking CXX executable Test"
+make[2]: Entering directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles --progress-num=1 "Building CXX object CMakeFiles/Test.dir/main.cpp.o"
+/usr/bin/c++  -I/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/.  -o CMakeFiles/Test.dir/main.cpp.o -c /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/main.cpp
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles --progress-num=2 "Building CXX object CMakeFiles/Test.dir/ServoClass.cpp.o"
+/usr/bin/c++  -I/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/.  -o CMakeFiles/Test.dir/ServoClass.cpp.o -c /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/ServoClass.cpp
+ 
+/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles --progress-num=3 "Linking CXX executable Test"
 /usr/bin/cmake -E cmake_link_script CMakeFiles/Test.dir/link.txt --verbose=
-make[2]: Leaving directory '/home/greppel/projects/MyDynamixel'
-/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/greppel/projects/MyDynamixel/CMakeFiles --progress-num=1,2,3 "Built target Test"
-make[1]: Leaving directory '/home/greppel/projects/MyDynamixel'
-/usr/bin/cmake -E cmake_progress_start /home/greppel/projects/MyDynamixel/CMakeFiles 0
-make: Leaving directory '/home/greppel/projects/MyDynamixel'
+make[2]: Leaving directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
+/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles --progress-num=1,2,3 "Built target Test"
+make[1]: Leaving directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
+/usr/bin/cmake -E cmake_progress_start /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles 0
+make: Leaving directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
  
