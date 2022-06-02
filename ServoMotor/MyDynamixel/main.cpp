@@ -14,14 +14,16 @@ int main()
     {
         //testservo2.Reboot();
         testservo2.ChangePos(200);
+        
         int b = testservo2.Read(34);
-        //std::cout << "pos:  " << b << "\n";
-
+        std::cout << "Maxtorque:  " << b << "\n";
+    
         delay(2000); 
        
         testservo2.ChangePos(800);
+      
          int a = testservo2.Read(34);
-        //std::cout << "pos:  " << a << "\n";
+        std::cout << "Maxtorque2:   " << a << "\n";
         
         delay(2000);
 
