@@ -50,6 +50,10 @@ int Servo::Read(int address)
 }
 
 void Servo::Reboot(){
+    int curPos = Servo::Read(36);
+
+    //TODO misschien positie +1
+    Servo::ChangePos(curPos );
     int val = 1023;
     int ID      =  Servo::id;
     int length  =  0x05;
@@ -67,10 +71,10 @@ void Servo::Reboot(){
     chksum  = Servo::CalculateChecksum(ID,length,inst,addr,parm1,parm2);
     int instruction[] = {HEADER,HEADER,ID,length,inst,addr,parm1,parm2,chksum};
     size_t count = sizeof(instruction)/4;
-     std::cout << "TEST4";
+     
 
     Servo::SendPacket(instruction, count);
-     std::cout << "TEST5";
+
 
     //Servo::HandleError();
 
@@ -88,15 +92,19 @@ int Servo::HandleError()
   delay(100);
   int count = serialDataAvail(fs);
 
-  std::cout << "TEST1";
+     std::cout << "Count:  "<< count << std::endl;
 
   char a;
+  if(count == 0){
+    std::cout << "No Data  " << std::endl;
+    return 0;
+  }
   serialGetchar(fs);
   serialGetchar(fs);
   serialGetchar(fs);
   serialGetchar(fs);
   a = serialGetchar(fs);
-  std::cout << "TEST2";
+
 
   if(a & 1){
     std::cout << "Input voltage Error" << '\n';
@@ -114,15 +122,15 @@ int Servo::HandleError()
     std::cout << "Checksum Error" << '\n';
   }
    if(a >> 5 & 1){
-    std::cout << "Overload Error" << '\n';
+    std::cout << "Overload Error" << std::endl;
     
-      std::cout << "TEST3";
+   
     Servo::Reboot();
   }
    if(a >> 6 & 1){
     std::cout << "Instruction Error" << '\n';
   }
-   std::cout << "TEST6";
+
 
 
   if(count == 8){
@@ -130,7 +138,9 @@ int Servo::HandleError()
     int b = (int) serialGetchar(fs);
     serialFlush(fs);
     return a + (b * 255);
+      
   }
+  
   serialFlush(fs);
   return 0;
 }
@@ -148,10 +158,12 @@ void Servo::ChangePos(int pos)
     chksum  = Servo::CalculateChecksum(ID,length,inst,addr,parm1,parm2);
     int instruction[] = {HEADER,HEADER,ID,length,inst,addr,parm1,parm2,chksum};
     size_t count = sizeof(instruction)/4;
-
+  std::cout << "TEST4" << std::endl;
     Servo::SendPacket(instruction, count);
+      
     delay(100);
     Servo::HandleError();
+
    
        
 }
