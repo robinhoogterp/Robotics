@@ -3,23 +3,25 @@
 #include <sys/socket.h>
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include "BTclient.h"
+
 struct sockaddr_rc addr;
 char buf[1024];
 int s, status, bytes_read;
-char dest[18];
-int filledarray[];
-int* ptr;
+char dest[18] =  "30:C6:F7:0E:34:AA";
+int filledarray[] = { 0,0,0,0,0,0,0,0,0,0,0,0 };
+int* ptr= filledarray;;
 int arrSize;
 
 void init() {
     sockaddr_rc addr = { 0 };
     buf[1024];
     s, status, bytes_read;
-    dest[18] = "30:C6:F7:0E:34:AA";
     //array with recieved data
-     filledarray[] = { 0,0,0,0,0,0,0,0,0,0,0,0 };
-     ptr = filledarray;
-     arrSize = sizeof(array);
+    
     // allocate a socket
     s = socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM);
 
@@ -34,9 +36,7 @@ void init() {
     memset(buf, 0, sizeof(buf));
 
 }
-void loop() {
 
-}
 void splitdata(char base[], int size, int* fill) {
     std::string sBase;
 
@@ -60,30 +60,50 @@ void splitdata(char base[], int size, int* fill) {
     }
 
 }
-int main(int argc, char **argv)
-{
-    init();
-  
 
-    // send a message
+void loop() {
+      // send a message
     if( status == 0 ) {
         status = write(s, "hallo!", 6);
     }
     listen(s, 1);
-    while (true)
-    {
+    
        bytes_read = read(s,buf, sizeof(buf));
     if(bytes_read > 0){
-        printf("recieved[%s]\n",buf);
-        break;
+        try{
+            splitdata(buf,sizeof(buf),ptr);
+            
+        }
+        catch(...){
+            std::cout<< "Help" << '\n';
+        }
+        
+        for(int i = 0;sizeof(filledarray)/4 > i; i++){
+            std::cout << "Results: "<< filledarray[i] ;
+        }
+         std::cout << '\n';
+        
     }
-    }
+    
     
 
     if( status < 0 ) perror("uh oh");
 
-    close(s);
-    close(status);
-    return 0;
+    // close(s);
+    // close(status);
+   
+
+}
+
+
+
+int main(int argc, char **argv)
+{
+    init();
+    while(true){
+        loop();
+    }
+  
+  
 }
 

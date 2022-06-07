@@ -50,10 +50,10 @@ int Servo::Read(int address)
 }
 
 void Servo::Reboot(){
-    int curPos = Servo::Read(36);
+    //int curPos = Servo::Read(36);
 
     //TODO misschien positie +1
-    Servo::ChangePos(curPos );
+    //Servo::ChangePos(curPos);
     int val = 1023;
     int ID      =  Servo::id;
     int length  =  0x05;
@@ -76,7 +76,7 @@ void Servo::Reboot(){
     Servo::SendPacket(instruction, count);
 
 
-    //Servo::HandleError();
+   // Servo::HandleError();
 
 }
 
@@ -125,7 +125,7 @@ int Servo::HandleError()
     std::cout << "Overload Error" << std::endl;
     
    
-    Servo::Reboot();
+    //Servo::Reboot();
   }
    if(a >> 6 & 1){
     std::cout << "Instruction Error" << '\n';
@@ -147,7 +147,7 @@ int Servo::HandleError()
 
 void Servo::ChangePos(int pos)
 {
-    int ID      =  Servo::id;
+    int ID      =   Servo::id;
     int length  =  (int)0x05;
     int inst    =  (int)0x03;
     int addr    =  (int)0x1E;
@@ -158,7 +158,7 @@ void Servo::ChangePos(int pos)
     chksum  = Servo::CalculateChecksum(ID,length,inst,addr,parm1,parm2);
     int instruction[] = {HEADER,HEADER,ID,length,inst,addr,parm1,parm2,chksum};
     size_t count = sizeof(instruction)/4;
-  std::cout << "TEST4" << std::endl;
+    
     Servo::SendPacket(instruction, count);
       
     delay(100);
@@ -166,6 +166,26 @@ void Servo::ChangePos(int pos)
 
    
        
+}
+
+
+
+void Servo::FactoryReset(){
+    int ID      =   Servo::id;
+    int length  =  (int)0x02;
+    int inst    =  (int)0x06;
+   
+    int chksum;
+ 
+    chksum  = Servo::CalculateChecksum(ID,length,inst);
+    int instruction[] = {HEADER,HEADER,ID,length,inst,chksum};
+    size_t count = sizeof(instruction)/4;
+    
+    Servo::SendPacket(instruction, count);
+      
+    delay(100);
+    Servo::HandleError();   
+
 }
 
 void Servo::SendPacket(int instruction[], int count){

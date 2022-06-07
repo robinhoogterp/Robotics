@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/.
+CXX_INCLUDES = -I/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/. -I/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/src -I/home/greppel/projects/Robotics/ServoMotor/MyDynamixel/include
 
 CXX_FLAGS = 
 

@@ -1,0 +1,1 @@
+void splitdata(char base[], int size, int* fill); 

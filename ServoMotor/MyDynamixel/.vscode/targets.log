@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun  2 09:50:52 2022
+# Make data base, printed on Thu Jun  2 15:48:54 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-181c83ce-a757-4e9f-9274-5eeeded15a65.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2e82e36c-fcec-415d-a0c9-2d1898a15b7f.sock
 # environment
 VSCODE_CWD = /home/greppel
 # environment
@@ -69,11 +69,11 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-baxO96bfIGMY/agent.584
+SSH_AUTH_SOCK = /tmp/ssh-HaBtXMfdZGlO/agent.585
 # default
 .SHELLFLAGS := -c
 # environment
-_LXSESSION_PID = 584
+_LXSESSION_PID = 585
 # environment
 XDG_CONFIG_DIRS = /etc/xdg
 # automatic
@@ -89,7 +89,7 @@ CMAKE_BINARY_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 1174
+VSCODE_PID = 2277
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -169,7 +169,7 @@ USER = greppel
 # default
 MAKE_VERSION := 4.3
 # environment
-SSH_AGENT_PID = 648
+SSH_AGENT_PID = 644
 # makefile (from 'Makefile', line 44)
 MAKESILENT = -s
 # environment
@@ -215,9 +215,9 @@ GDMSESSION = lightdm-xsession
 
 # RCS: could not be stat'd.
 # SCCS: could not be stat'd.
-# . (device 45826, inode 394360): 17 files, no impossibilities.
+# . (device 45826, inode 394360): 21 files, no impossibilities.
 
-# 17 files, no impossibilities in 3 directories.
+# 21 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -275,8 +275,7 @@ Test: cmake_check_build_system
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-06-02 09:47:23.027869029
+#  Last modified 2022-06-02 13:38:14.093902272
 #  File has been updated.
 #  Successfully updated.
 
@@ -287,6 +286,7 @@ rebuild_cache:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 80):
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+ 
 	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 
 ServoClass.cpp.i:
@@ -526,12 +526,12 @@ ServoClass.cpp.s:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 61 / storage = 675 B / avg = 11 B
-# current buf: size = 8174 B / used = 675 B / count = 61 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 65 / storage = 714 B / avg = 10 B
+# current buf: size = 8174 B / used = 714 B / count = 65 / avg = 10 B
 
-# strcache performance: lookups = 202 / hit rate = 69%
+# strcache performance: lookups = 206 / hit rate = 68%
 # hash-table stats:
-# Load=61/8192=1%, Rehash=0, Collisions=0/202=0%
-# Finished Make data base on Thu Jun  2 09:50:52 2022
+# Load=65/8192=1%, Rehash=0, Collisions=0/206=0%
+# Finished Make data base on Thu Jun  2 15:48:54 2022
 
  
