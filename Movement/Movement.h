@@ -13,9 +13,21 @@
 #include <atomic>
 
 class Movement {
-		const int pin = 26;
-		const int pin_forward = 27;
-		const int pin_backwards = 28;
+	// PWM 
+		const int pwm = 26;
+	// Motor 1 Linksvoor
+		const int pin_forward1 = 23;
+		const int pin_backwards1 = 24;
+	// Motor 2 Linksachter
+		const int pin_forward2 = 21;
+		const int pin_backwards2 = 22;
+	// Motor 3 Rechtsvoor
+		const int pin_forward3 = 25;
+		const int pin_backwards3 = 29;
+	// Motor 4 Rechtsachter
+		const int pin_forward4 = 27;
+		const int pin_backwards4 = 28;
+		
 		double timer = 0;
 		int temporary;
 		int throttle;
@@ -24,9 +36,11 @@ class Movement {
 		double forward_thrust;
 		double backward_thrust;
 		double current_thrust = 0;
+		bool Modus = true;
 		
 		public:
 		void setup();
-		void moveDC(double scaling, double factor, double forward_thrust, double backward_thrust , int throttle);
+		void moveStandard(double scaling, double factor, double forward_thrust, double backward_thrust , int throttle);
+		void moveTank(double scaling, double factor, double left_thrust, double right_thrust , int throttle);
 		void receivedata(int input1, int input2);
 };
