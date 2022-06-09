@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <thread>
 #include <chrono>
@@ -13,7 +14,7 @@ class Timer {
 
 };
 
-void Timer::setTimeout(auto function, int delay) {
+inline void Timer::setTimeout(auto function, int delay) {
     active = true;
     std::thread t([=]() {
         if(!active.load()) return;
@@ -24,7 +25,7 @@ void Timer::setTimeout(auto function, int delay) {
     t.detach();
 }
 
-void Timer::setInterval(auto function, int interval) {
+inline void Timer::setInterval(auto function, int interval) {
     active = true;
     std::thread t([=]() {
         while(active.load()) {
@@ -36,6 +37,6 @@ void Timer::setInterval(auto function, int interval) {
     t.detach();
 }
 
-void Timer::stop() {
+inline void Timer::stop() {
     active = false;
 }

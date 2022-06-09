@@ -130,16 +130,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named keyboard
+# Target rules for targets named movement
 
 # Build rule for target.
 movement: cmake_check_build_system
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 movement
+	
 .PHONY : movement
 
 # fast build rule for target.
 movement/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/keyboard.dir/build.make CMakeFiles/movement.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/movement.dir/build.make CMakeFiles/movement.dir/build
 .PHONY : movement/fast
 
 Movement.o: Movement.cpp.o
@@ -147,28 +148,25 @@ Movement.o: Movement.cpp.o
 .PHONY : Movement.o
 
 # target to build an object file
-Keyboard.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/keyboard.dir/build.make CMakeFiles/movement.dir/Movement.cpp.o
+Movement.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/movement.dir/build.make CMakeFiles/movement.dir/Movement.cpp.o
 .PHONY : Movement.cpp.o
 
-Keyboard.i: Movement.cpp.i
+Movement.i: Movement.cpp.i
 
 .PHONY : Movement.i
-
 # target to preprocess a source file
 Movement.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/movement.dir/build.make CMakeFiles/movement.dir/Movement.cpp.i
 .PHONY : Movement.cpp.i
 
 Movement.s: Movement.cpp.s
-
 .PHONY : Movement.s
 
 # target to generate assembly for a file
 Movement.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/movement.dir/build.make CMakeFiles/movement.dir/Movement.cpp.s
 .PHONY : Movement.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"

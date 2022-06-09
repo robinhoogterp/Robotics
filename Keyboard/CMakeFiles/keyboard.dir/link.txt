@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/keyboard.dir/Keyboard.cpp.o -o keyboard  -Wl,-rpath,/usr/local/lib /usr/local/lib/libwiringPi.so 

@@ -1,3 +1,0 @@
-/home/greppel/projects/Robotics/Keyboard/CMakeFiles/rebuild_cache.dir
-/home/greppel/projects/Robotics/Keyboard/CMakeFiles/edit_cache.dir
-/home/greppel/projects/Robotics/Keyboard/CMakeFiles/keyboard.dir

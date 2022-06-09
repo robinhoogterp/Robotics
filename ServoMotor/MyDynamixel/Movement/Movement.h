@@ -35,12 +35,16 @@ class Movement {
 		double factor;
 		double forward_thrust;
 		double backward_thrust;
+		double left_thrust;
+		double right_thrust;
 		double current_thrust = 0;
 		bool Modus = true;
+		Timer d;
+		Timer t;
 		
 		public:
 		void setup();
 		void moveStandard(double scaling, double factor, double forward_thrust, double backward_thrust , int throttle);
 		void moveTank(double scaling, double factor, double left_thrust, double right_thrust , int throttle);
-		void receivedata(int input1, int input2);
+		void receivedata(int input1, int input2, int button);
 };
