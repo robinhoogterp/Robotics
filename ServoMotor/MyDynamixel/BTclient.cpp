@@ -18,7 +18,7 @@ int arrSize;
 int btn1, btn2, btn3, btn4, btn5, btn6;
 
 void BTclient::init() {
-    sockaddr_rc addr = { 0 };
+    sockaddr_rc addr = { 0xB8,0x27,0xEB,0x15,0xF3,0xC2 };
     buf[1024];
     s, status, bytes_read;
     //array with recieved data
@@ -52,6 +52,8 @@ void BTclient::splitdata(char base[], int size, int* fill) {
         }
         else if (sample == 'A') {
             *(fill + j) = std::stoi(sBase);
+            sBase.clear();
+            break;
         }
         else
         {
@@ -80,7 +82,7 @@ void BTclient::loop() {
         }
         std::cout << "Results: ";
         for(int i = 0;sizeof(filledarray)/4 > i; i++){
-            std::cout << filledarray[i] ;
+            std::cout << filledarray[i] << "," ;
         }
         btn2 = filledarray[7];
          std::cout << '\n';

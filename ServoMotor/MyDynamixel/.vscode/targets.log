@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun  2 15:48:54 2022
+# Make data base, printed on Tue Jun  7 20:01:01 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2e82e36c-fcec-415d-a0c9-2d1898a15b7f.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b6add12e-18cd-4c49-8153-80c8f09ca5d9.sock
 # environment
 VSCODE_CWD = /home/greppel
 # environment
@@ -69,11 +69,11 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-HaBtXMfdZGlO/agent.585
+SSH_AUTH_SOCK = /tmp/ssh-CARcnhYutlfk/agent.596
 # default
 .SHELLFLAGS := -c
 # environment
-_LXSESSION_PID = 585
+_LXSESSION_PID = 596
 # environment
 XDG_CONFIG_DIRS = /etc/xdg
 # automatic
@@ -89,7 +89,7 @@ CMAKE_BINARY_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 2277
+VSCODE_PID = 982
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -169,7 +169,7 @@ USER = greppel
 # default
 MAKE_VERSION := 4.3
 # environment
-SSH_AGENT_PID = 644
+SSH_AGENT_PID = 655
 # makefile (from 'Makefile', line 44)
 MAKESILENT = -s
 # environment
@@ -275,6 +275,7 @@ Test: cmake_check_build_system
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-06-02 13:38:14.093902272
 #  File has been updated.
 #  Successfully updated.
@@ -286,7 +287,6 @@ rebuild_cache:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 80):
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
- 
 	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 
 ServoClass.cpp.i:
@@ -532,6 +532,6 @@ ServoClass.cpp.s:
 # strcache performance: lookups = 206 / hit rate = 68%
 # hash-table stats:
 # Load=65/8192=1%, Rehash=0, Collisions=0/206=0%
-# Finished Make data base on Thu Jun  2 15:48:54 2022
+# Finished Make data base on Tue Jun  7 20:01:01 2022
 
  
