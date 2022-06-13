@@ -12,12 +12,12 @@ struct sockaddr_rc addr;
 char buf[1024];
 int s, status, bytes_read;
 char dest[18] =  "30:C6:F7:0E:34:AA";
-int filledarray[] = { 0,0,0,0,0,0,0,0,0,0,0,0 };
+int filledarray[] = { 0,0,0,0,0,0,0,0};
 int* ptr= filledarray;
 int arrSize;
-int btn1, btn2, btn3, btn4, btn5, btn6;
 
-void BTclient::init() {
+
+bool BTclient::init() {
     sockaddr_rc addr = { 0xB8,0x27,0xEB,0x15,0xF3,0xC2 };
     buf[1024];
     s, status, bytes_read;
@@ -35,7 +35,7 @@ void BTclient::init() {
     status = connect(s, (struct sockaddr*)&addr, sizeof(addr));
 
     memset(buf, 0, sizeof(buf));
-
+    return true;
 }
 
 void BTclient::splitdata(char base[], int size, int* fill) {
@@ -64,7 +64,7 @@ void BTclient::splitdata(char base[], int size, int* fill) {
 
 }
 
-void BTclient::loop() {
+int* BTclient::loop() {
       // send a message
     if( status == 0 ) {
         status = write(s, "hallo!", 6);
@@ -75,33 +75,23 @@ void BTclient::loop() {
     if(bytes_read > 0){
         try{
             splitdata(buf,sizeof(buf),ptr);
+       
             
         }
         catch(...){
             std::cout<< "Help" << '\n';
         }
-        std::cout << "Results: ";
-        for(int i = 0;sizeof(filledarray)/4 > i; i++){
-            std::cout << filledarray[i] << "," ;
-        }
-        btn2 = filledarray[7];
-         std::cout << '\n';
+ 
         
-    }
-    
-    
+    }   
 
-    if( status < 0 ) perror("uh oh");
 
-    // close(s);
-    // close(status);
-   
-
+   return ptr;
 }
 
-int BTclient::GetBtn2(){
-    return  btn2;
-}
+
+
+
 
 
 

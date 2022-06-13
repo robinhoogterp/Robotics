@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun  7 20:01:01 2022
+# Make data base, printed on Thu Jun  9 22:18:44 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b6add12e-18cd-4c49-8153-80c8f09ca5d9.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-9e98c1ff-403f-4a94-8da6-61c66c82f6d5.sock
 # environment
 VSCODE_CWD = /home/greppel
 # environment
@@ -69,11 +69,11 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-CARcnhYutlfk/agent.596
+SSH_AUTH_SOCK = /tmp/ssh-HBTtnrk7RN7N/agent.589
 # default
 .SHELLFLAGS := -c
 # environment
-_LXSESSION_PID = 596
+_LXSESSION_PID = 589
 # environment
 XDG_CONFIG_DIRS = /etc/xdg
 # automatic
@@ -89,7 +89,7 @@ CMAKE_BINARY_DIR = /home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 982
+VSCODE_PID = 960
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -169,7 +169,7 @@ USER = greppel
 # default
 MAKE_VERSION := 4.3
 # environment
-SSH_AGENT_PID = 655
+SSH_AGENT_PID = 666
 # makefile (from 'Makefile', line 44)
 MAKESILENT = -s
 # environment
@@ -215,9 +215,9 @@ GDMSESSION = lightdm-xsession
 
 # RCS: could not be stat'd.
 # SCCS: could not be stat'd.
-# . (device 45826, inode 394360): 21 files, no impossibilities.
+# . (device 45826, inode 394360): 25 files, no impossibilities.
 
-# 21 files, no impossibilities in 3 directories.
+# 25 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -526,12 +526,12 @@ ServoClass.cpp.s:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 65 / storage = 714 B / avg = 10 B
-# current buf: size = 8174 B / used = 714 B / count = 65 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 69 / storage = 735 B / avg = 10 B
+# current buf: size = 8174 B / used = 735 B / count = 69 / avg = 10 B
 
-# strcache performance: lookups = 206 / hit rate = 68%
+# strcache performance: lookups = 210 / hit rate = 67%
 # hash-table stats:
-# Load=65/8192=1%, Rehash=0, Collisions=0/206=0%
-# Finished Make data base on Tue Jun  7 20:01:01 2022
+# Load=69/8192=1%, Rehash=0, Collisions=0/210=0%
+# Finished Make data base on Thu Jun  9 22:18:45 2022
 
  

@@ -22,3 +22,6 @@ make[1]: Leaving directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamix
 /usr/bin/cmake -E cmake_progress_start /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles 0
 make: Leaving directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
  
+make[2]: Warning: File 'main.cpp' has modification time 680 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+

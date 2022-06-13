@@ -1,4 +1,5 @@
 #include "main.h"
+
 #include "BTclient.h"
 #include <iostream>
 #include <cstdio>
@@ -7,57 +8,65 @@
 
 int main()
 {
+    int* inputArr;
     Servo::InitPins();
     Servo::CreateConnection();
     Servo testservo(1);
-    Servo testservo2(2);
-    //testservo.FactoryReset();
-    //BTclient::init();
+    Servo armservoL(4);
+    Servo armservoR(5);
+    Servo stuurservo(6);
+    arm arm1;
+    
+    
+    bool connected = BTclient::init();
     bool btn2 = true;
     //testservo.EnableTorque();
-    testservo.ChangeMovSpd(0);
-    testservo2.ChangeMovSpd(0);
-    delay(1000);
-    testservo.ChangeMovSpd(900);
-    testservo2.ChangeMovSpd(900);
-    while (true)
-    { 
-      
-        //if(btn2){
-        //    testservo.ChangePos(600);
-        //}
-        //else{
-         //  testservo.ChangePos(800);
-        //}
-         //testservo2.ChangePos(600);
-         //delay(1000);
-         //testservo2.ChangePos(800);
-         //testservo.ChangePos(800);
-         //delay(1000);
-         //testservo2.ChangePos(400);
-         //testservo.ChangePos(400);
-         //delay(1000);
+    //testservo.ChangeMovSpd(0);
+    //testservo2.ChangeMovSpd(0);
+    //delay(1000);
+    //testservo.ChangeMovSpd(900);
+    //testservo2.ChangeMovSpd(900);
+    //testservo.ChangePos(0);
+    //testservo2.ChangePos(0);
+    //armservoL.ChangePos(1023);
+    //armservoR.ChangePos(0);
 
-        //delay(5000);
-        delay(1000);
-        testservo.SyncWrite(1,400,2,400);
-        std::cout << "Current Speed: " << testservo2.Read(32) << std::endl;
-        //testservo2.ChangePos(800);
-        delay(1000);
-        testservo.SyncWrite(1,600,2,600);
-        /*
-       std::cout <<"start" << std::endl;
+    while (connected)
+    { 
+       
+
+       inputArr = BTclient::loop();
+       for(int i = 0;i < 8;i++){
+           std::cout << inputArr[i] << ", ";
+       }    
+       std::cout << '\n' << '\n';
+ 
     
-        testservo.ChangePos(740);
+    arm1.takeinput(inputArr[0],inputArr[3]);
+    delay(200);
+    
+   
+     
+    // int pos = stuurservo.Read(36);
+    // std::cout << "Starting Pos Stuur Servo "<< pos  << std::endl; 
+    // std::cout << "Speed Pos Stuur Servo " << stuurservo.Read(38) << std::endl;    
+    //std::cout << "Starting Pos Arm links: " << armservoL.Read(36) << std::endl;
+    //std::cout << "Starting Pos Arm Rechts: " << armservoR.Read(36) << std::endl;
+        //delay(1000);
+        //arm1.takeinput(4000,4000);
+        //delay(500);
+
+        //armservoL.SyncWrite(2,1023,3,0);
+        //delay(5000);
         
-        std::cout << "Goalpos: " << testservo.Read(32) << std::endl;
-        delay(1000);
-        testservo.ChangePos(500);
-         std::cout << "Goalpos: " << testservo.Read(30) << std::endl;
-        delay(1000);
-        */
-       //BTclient::loop();
-      //btn2 = (bool)BTclient::GetBtn2();
+
+        // stuurservo.ChangePos(pos-100);
+        // delay(5000);
+        
+      
+
+
+
      
             
          

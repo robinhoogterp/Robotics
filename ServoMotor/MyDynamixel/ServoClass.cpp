@@ -193,6 +193,47 @@ int Servo::HandleError()
   serialFlush(fs);
   return 0;
 }
+// Send Packet to change CW to 0
+void Servo::ChangeCW()
+{
+    int ID      =   Servo::id;
+    int length  =  (int)0x05;
+    int inst    =  (int)0x03;
+    int addr    =  (int)0x06;
+    int parm1 =  0;
+    int parm2 = 0;
+    int chksum;
+ 
+    chksum  = Servo::CalculateChecksum(ID,length,inst,addr,parm1,parm2);
+    int instruction[] = {HEADER,HEADER,ID,length,inst,addr,parm1,parm2,chksum};
+    size_t count = sizeof(instruction)/4;
+    
+    Servo::SendPacket(instruction, count);
+      
+    delay(DELAY);
+    
+}
+
+// Send Packet to change CCW to 1023
+void Servo::ChangeCCW()
+{
+    int ID      =   Servo::id;
+    int length  =  (int)0x05;
+    int inst    =  (int)0x03;
+    int addr    =  (int)0x08;
+    int parm1 =  0xFF;
+    int parm2 = 0x03;
+    int chksum;
+ 
+    chksum  = Servo::CalculateChecksum(ID,length,inst,addr,parm1,parm2);
+    int instruction[] = {HEADER,HEADER,ID,length,inst,addr,parm1,parm2,chksum};
+    size_t count = sizeof(instruction)/4;
+    
+    Servo::SendPacket(instruction, count);
+      
+    delay(DELAY);
+    
+}
 
 // Sends a packet to change servo position to parameter pos
 void Servo::ChangePos(int pos)
@@ -281,10 +322,10 @@ void Servo::SendPacket(int instruction[], int count){
     digitalWrite(PIN,HIGH);  
     for(int i =0; i < count; ++i)
     {
-      std::cout << i << ": " << instruction[i]<< " ";
+      //std::cout << i << ": " << instruction[i]<< " ";
       serialPutchar(fs,instruction[i]);
     }
-    std::cout << std::endl;
+    //std::cout << std::endl;
       
     delayMicroseconds(400);
     digitalWrite(PIN,LOW);

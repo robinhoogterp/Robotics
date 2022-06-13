@@ -15,7 +15,8 @@ class Servo{
 
         void ChangePos(int pos);
         int HandleError();
-
+        void ChangeCW();
+        void ChangeCCW();
         void EnableTorque();
         void ChangeMovSpd(int speed);
         void FactoryReset();
