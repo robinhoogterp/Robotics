@@ -29,60 +29,61 @@ void arm::updateservo1ste(int* ptr) {
  
 }
 void arm::updatearrayknikpunt1(int scaler1, int* ptr) {
-    int links1 = Links.Read(36);
-    int rechts1 = Rechts.Read(36);
+    int links1 = ptr[0];
+    int rechts1 = ptr[1];
     
     std::cout << "links: "<<links1<<"rechts: " << rechts1 << std::endl;
     if(links1 == 0 && rechts1 ==0){
        
     }
-    if ((links1 - scaler1) < MIN && scaler1 < 0 || (rechts1 - scaler1) < MIN && scaler1 < 0 )
+    else if ((links1 - scaler1) < MIN && scaler1 < 0 || (rechts1 + scaler1) < MIN && scaler1 < 0 )
     {
-        std::cout << "if1";
+        std::cout << "if1" << std::endl;
         
     }
-    else if ((links1 + scaler1) > MAX && scaler1 > 0|| (rechts1 + scaler1) > MAX && scaler1 > 0) 
+    else if ((links1 - scaler1) > MAX && scaler1 > 0|| (rechts1 + scaler1) > MAX && scaler1 > 0) 
     {
-            std::cout << "if2";
+            std::cout << "if2" << std::endl;
         
     }
     else
     { 
-        std::cout << "yeet";
+        std::cout << "yeet" << std::endl;
         ptr[0] = ptr[0] - scaler1;
         ptr[1] = ptr[1] + scaler1;
-     
+     updateservo1ste(ptr);
     }
     
-    updateservo1ste(ptr);
+
+    
 }
 void arm::updatearrayknikpunt2(int scaler1, int* ptr) {
-    int links1 = Links.Read(36);
-    int rechts1 = Rechts.Read(36);
+    int links1 = ptr[2];
+    int rechts1 = ptr[3];
     
     std::cout << "links: "<<links1<<"rechts: " << rechts1 << std::endl;
     if(links1 == 0 && rechts1 ==0){
        
     }
-    if ((links1 - scaler1) < MIN && scaler1 < 0 || (rechts1 - scaler1) < MIN && scaler1 < 0 )
+    else if ((links1 - scaler1) < MIN && scaler1 < 0 || (rechts1 + scaler1) < MIN && scaler1 < 0 )
     {
-        std::cout << "if1";
+        std::cout << "if1" << std::endl;
         
     }
-    else if ((links1 + scaler1) > MAX && scaler1 > 0|| (rechts1 + scaler1) > MAX && scaler1 > 0) 
+    else if ((links1 - scaler1) > MAX && scaler1 > 0|| (rechts1 + scaler1) > MAX && scaler1 > 0) 
     {
-            std::cout << "if2";
+            std::cout << "if2" << std::endl;
         
     }
     else
     { 
-        std::cout << "yeet";
+        std::cout << "yeet" << std::endl;
         ptr[2] = ptr[2] - scaler1;
         ptr[3] = ptr[3] + scaler1;
-     
+        updateservo2de(ptr);
     }
     
-    updateservo2de(ptr);
+    
 }
 int* arm::getpositions() {
     return this->positions;
@@ -94,35 +95,37 @@ void arm::scaledposition(float x) {
     std::cout << servodata;
 }
 void arm::takeinput(int input, int input2) {
-
     for (int i = 0;sizeof(this->positions) / 4 > i; i++) {
         std::cout << this->positions[i]<< std::endl;
     }
-    
-    scaledposition((float)input);
     if(input > 1747 && input < 2347){
-
+    
     }
-    else if (this->range / 2 > input && this->range / 2 > input2) {
-        
-        updatearrayknikpunt1(-SCALER,this->ptr);
-        updatearrayknikpunt1(-SCALER,this->ptr);
-
-    }
-    else if (this->range / 2 > input && this->range / 2 < input2) {
+    else if (this->range / 2 > input) {
     
         updatearrayknikpunt1(-SCALER,this->ptr);
-        updatearrayknikpunt1(SCALER,this->ptr);
+       
     }
-    else if (this->range / 2 < input && this->range / 2 < input2) {
+    else if (this->range / 2 < input ) {
      
         updatearrayknikpunt1(SCALER,this->ptr);
-        updatearrayknikpunt1(SCALER,this->ptr);
     }
-    else {
+ 
+
+    if(input2 > 1747 && input2 < 2347){
+
+    }
+    else if (this->range / 2 > input2) {
+        
+        updatearrayknikpunt2(-SCALER,this->ptr);
        
-        updatearrayknikpunt1(SCALER,this->ptr);
-        updatearrayknikpunt1(-SCALER,this->ptr);
+
     }
+    else if (this->range / 2 < input2) {
+     
+       
+        updatearrayknikpunt2(SCALER,this->ptr);
+    }
+  
 }
 
