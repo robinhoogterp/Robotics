@@ -1,0 +1,2 @@
+g++ ws2812-rpi.cpp ws2812-rpi-test.cpp -o ws2812-rpi-test -lrt
+g++ -Wall -o "%e" "%f" -lwiringPi  -std=c++14 -pthread -fconcepts-ts

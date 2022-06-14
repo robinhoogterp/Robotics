@@ -1,0 +1,3 @@
+C:/Users/honos/CLionProjects/clientCPP/cmake-build-debug/CMakeFiles/start.dir
+C:/Users/honos/CLionProjects/clientCPP/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/honos/CLionProjects/clientCPP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
