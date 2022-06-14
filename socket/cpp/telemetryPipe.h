@@ -8,6 +8,8 @@
 #include "json_struct.h"
 #include "telemetrics.h"
 #include <fstream>
+#include <signal.h>
+#include <poll.h>
 #include <chrono>
 
 class telemetryPipe {
@@ -15,9 +17,9 @@ public:
     char *myfifo_write = "/tmp/greppel_out";
     char *myfifo_read  = "/tmp/greppel_in";
 
-
-    int fd_write;
-    int fd_read;
+    struct pollfd fdtab[2];
+    int fd_write = open(myfifo_write, O_WRONLY);
+    int fd_read  = open(myfifo_read, O_RDONLY);
     telemetryPipe();
     void sendState();
     void printDCS();

@@ -15,14 +15,11 @@ private:
     telemetrics();
 public:
     struct _telemetry {
-        int dc1;
-        int dc2;
-        int dc3;
-        int dc4;
+        int dc;
         int pf1, pf2, pf3, pf4;
         int pb1, pb2, pb3, pb4;
 
-        JS_OBJ(dc1, dc2, dc3, dc4, pf1, pf2, pf3, pf4, pb1, pb2, pb3, pb4);
+        JS_OBJ(dc, pf1, pf2, pf3, pf4, pb1, pb2, pb3, pb4);
     } telemetry;
     static telemetrics* getInstance();
 };
