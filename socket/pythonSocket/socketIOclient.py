@@ -32,7 +32,7 @@ async def background_task():
             await send_state()
             await send_cam()
             # await send_state()
-            await asyncio.sleep(0.001)
+            await asyncio.sleep(0.1)
     except Exception as e:
         print(e)
 

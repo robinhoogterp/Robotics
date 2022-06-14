@@ -49,26 +49,26 @@ void Movement::moveStandard(double scaling, double factor, double forward_thrust
 			forward_thrust = current_thrust; // Nieuwe snelheid in forward_thrust zetten
 		}
 	telemetrics* tm = telemetrics::getInstance();
-
+	tPipe.sendState();
 	
     digitalWrite(pin_forward1, 1);
-    (*tm).telemetry.pf1 = pin_forward1;
+    (*tm).telemetry.pf1 = 1;
 	digitalWrite(pin_backwards1, 0);
-	(*tm).telemetry.pb1 = pin_backwards1;
+	(*tm).telemetry.pb1 = 0;
 	digitalWrite(pin_forward2, 1);
-	(*tm).telemetry.pf2 = pin_forward2;
+	(*tm).telemetry.pf2 = 1;
 	digitalWrite(pin_backwards2, 0);
-	(*tm).telemetry.pb2 = pin_backwards2;
+	(*tm).telemetry.pb2 = 0;
     digitalWrite(pin_forward3, 1);
-    (*tm).telemetry.pf3 = pin_forward3;
+    (*tm).telemetry.pf3 = 1;
 	digitalWrite(pin_backwards3, 0);
-	(*tm).telemetry.pb3 = pin_backwards3;
+	(*tm).telemetry.pb3 = 0;
     digitalWrite(pin_forward4, 1);
-    (*tm).telemetry.pf4 = pin_forward4;
+    (*tm).telemetry.pf4 = 1;
 	digitalWrite(pin_backwards4, 0);
-	(*tm).telemetry.pb4 = pin_backwards4;
+	(*tm).telemetry.pb4 = 0;
 	softPwmWrite(pwm, current_thrust);
-	(*tm).telemetry.dc1 = current_thrust;
+	(*tm).telemetry.dc = current_thrust;
 	
 	timer+=0.1;
 	
@@ -89,21 +89,21 @@ void Movement::moveStandard(double scaling, double factor, double forward_thrust
 	telemetrics* tm = telemetrics::getInstance();
 	
     digitalWrite(pin_forward1, 0);
-    (*tm).telemetry.pf1 = pin_forward1;
+    (*tm).telemetry.pf1 = 0;
 	digitalWrite(pin_backwards1, 1);
-	(*tm).telemetry.pb1 = pin_backwards1;
+	(*tm).telemetry.pb1 = 1;
 	digitalWrite(pin_forward2, 0);
-	(*tm).telemetry.pf2 = pin_forward2;
+	(*tm).telemetry.pf2 = 0;
 	digitalWrite(pin_backwards2, 1);
-	(*tm).telemetry.pb2 = pin_backwards2;
+	(*tm).telemetry.pb2 = 1;
     digitalWrite(pin_forward3, 0);
-    (*tm).telemetry.pf3 = pin_forward3;
+    (*tm).telemetry.pf3 = 0;
 	digitalWrite(pin_backwards3, 1);
-	(*tm).telemetry.pb4 = pin_backwards3;
+	(*tm).telemetry.pb4 = 1;
     digitalWrite(pin_forward4, 0);
-    (*tm).telemetry.pf4 = pin_forward4;
+    (*tm).telemetry.pf4 = 0;
 	digitalWrite(pin_backwards4, 1);
-	(*tm).telemetry.pb4 = pin_backwards4;
+	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, current_thrust);
 	timer+=0.1;
 		cout << "Timer: " << " " << timer << " Seconden" << endl;
@@ -115,24 +115,24 @@ void Movement::moveStandard(double scaling, double factor, double forward_thrust
 	telemetrics* tm = telemetrics::getInstance();
 	
     digitalWrite(pin_forward1, 1);
-    (*tm).telemetry.pf1 = pin_forward1;
+    (*tm).telemetry.pf1 = 1;
 	digitalWrite(pin_backwards1, 1);
-	(*tm).telemetry.pb1 = pin_backwards1;
+	(*tm).telemetry.pb1 = 1;
 	digitalWrite(pin_forward2, 1);
-	(*tm).telemetry.pf2 = pin_forward2;
+	(*tm).telemetry.pf2 = 1;
 	digitalWrite(pin_backwards2, 1);
-	(*tm).telemetry.pb2 = pin_backwards2;
+	(*tm).telemetry.pb2 = 1;
     digitalWrite(pin_forward3, 1);
-    (*tm).telemetry.pf3 = pin_forward3;
+    (*tm).telemetry.pf3 = 1;
 	digitalWrite(pin_backwards3, 1);
-	(*tm).telemetry.pb4 = pin_backwards3;
+	(*tm).telemetry.pb4 = 1;
     digitalWrite(pin_forward4, 1);
-    (*tm).telemetry.pf4 = pin_forward4;
+    (*tm).telemetry.pf4 = 1;
 	digitalWrite(pin_backwards4, 1);
-	(*tm).telemetry.pb4 = pin_backwards4;
+	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, 0);
 	current_thrust = 0;
-	(*tm).telemetry.dc1 = current_thrust;
+	(*tm).telemetry.dc = current_thrust;
 	        cout << "Remmen" << endl;
 		}
 		
@@ -158,6 +158,7 @@ void Movement::moveTank(double scaling, double factor, double left_thrust, doubl
 		}
 	telemetrics* tm = telemetrics::getInstance();
 	
+	
     digitalWrite(pin_forward1, 0);
     (*tm).telemetry.pf1 = pin_forward1;
 	digitalWrite(pin_backwards1, 1);
@@ -175,7 +176,7 @@ void Movement::moveTank(double scaling, double factor, double left_thrust, doubl
 	digitalWrite(pin_backwards4, 0);
 	(*tm).telemetry.pb4 = pin_backwards4;
 	softPwmWrite(pwm, current_thrust);
-	(*tm).telemetry.dc1 = current_thrust;
+	(*tm).telemetry.dc = current_thrust;
 	timer+=0.1;
 	
 		cout << "Timer: " << " " << timer << " Seconden" << endl;
@@ -195,23 +196,23 @@ void Movement::moveTank(double scaling, double factor, double left_thrust, doubl
 	telemetrics* tm = telemetrics::getInstance();
 	
     digitalWrite(pin_forward1, 1);
-    (*tm).telemetry.pf1 = pin_forward1;
+    (*tm).telemetry.pf1 = 1;
 	digitalWrite(pin_backwards1, 0);
-	(*tm).telemetry.pb1 = pin_backwards1;
+	(*tm).telemetry.pb1 = 0;
 	digitalWrite(pin_forward2, 1);
-	(*tm).telemetry.pf2 = pin_forward2;
+	(*tm).telemetry.pf2 = 1;
 	digitalWrite(pin_backwards2, 0);
-	(*tm).telemetry.pb2 = pin_backwards2;
+	(*tm).telemetry.pb2 = 0;
     digitalWrite(pin_forward3, 0);
-    (*tm).telemetry.pf3 = pin_forward3;
+    (*tm).telemetry.pf3 = 0;
 	digitalWrite(pin_backwards3, 1);
-	(*tm).telemetry.pb3 = pin_backwards3;
+	(*tm).telemetry.pb3 = 1;
     digitalWrite(pin_forward4, 0);
-    (*tm).telemetry.pf4 = pin_forward4;
+    (*tm).telemetry.pf4 = 0;
 	digitalWrite(pin_backwards4, 1);
-	(*tm).telemetry.pb4 = pin_backwards4;
+	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, current_thrust);
-	(*tm).telemetry.dc1 = current_thrust;
+	(*tm).telemetry.dc = current_thrust;
 	timer+=0.1;
 	
 		cout << "Timer: " << " " << timer << " Seconden" << endl;
@@ -223,26 +224,27 @@ void Movement::moveTank(double scaling, double factor, double left_thrust, doubl
 	telemetrics* tm = telemetrics::getInstance();
 	
     digitalWrite(pin_forward1, 1);
-    (*tm).telemetry.pf1 = pin_forward1;
+    (*tm).telemetry.pf1 = 1;
 	digitalWrite(pin_backwards1, 1);
-	(*tm).telemetry.pb1 = pin_backwards1;
+	(*tm).telemetry.pb1 = 1;
 	digitalWrite(pin_forward2, 1);
-	(*tm).telemetry.pf2 = pin_forward2;
+	(*tm).telemetry.pf2 = 1;
 	digitalWrite(pin_backwards2, 1);
-	(*tm).telemetry.pb2 = pin_backwards2;
+	(*tm).telemetry.pb2 = 1;
     digitalWrite(pin_forward3, 1);
-    (*tm).telemetry.pf3 = pin_forward3;
+    (*tm).telemetry.pf3 = 1;
 	digitalWrite(pin_backwards3, 1);
-	(*tm).telemetry.pb3 = pin_backwards3;
+	(*tm).telemetry.pb3 = 1;
     digitalWrite(pin_forward4, 1);
-    (*tm).telemetry.pf4 = pin_forward4;
+    (*tm).telemetry.pf4 = 1;
 	digitalWrite(pin_backwards4, 1);
-	(*tm).telemetry.pb4 = pin_backwards4;
+	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, 0);
 	current_thrust = 0;
-	(*tm).telemetry.dc1 = current_thrust;
+	(*tm).telemetry.dc = current_thrust;
 	        cout << "Wachten op nieuwe input, Remmen" << endl;
-		}		
+		}
+		
 }, 100); 
 	
     while(true);
