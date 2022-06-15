@@ -3,8 +3,10 @@ make: Entering directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel
 /usr/bin/cmake -S/home/greppel/projects/Robotics/ServoMotor/MyDynamixel -B/home/greppel/projects/Robotics/ServoMotor/MyDynamixel --check-build-system CMakeFiles/Makefile.cmake 0
 /usr/bin/cmake -E cmake_progress_start /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles /home/greppel/projects/Robotics/ServoMotor/MyDynamixel//CMakeFiles/progress.marks
 make -s -f CMakeFiles/Makefile2 all
+ 
 make[1]: Entering directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
 make -s -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/depend
+ 
 make[2]: Entering directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'
 cd /home/greppel/projects/Robotics/ServoMotor/MyDynamixel && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel /home/greppel/projects/Robotics/ServoMotor/MyDynamixel/CMakeFiles/Test.dir/DependInfo.cmake --color=
 make[2]: Leaving directory '/home/greppel/projects/Robotics/ServoMotor/MyDynamixel'

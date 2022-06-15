@@ -1,3 +1,4 @@
+
 #include "telemetryPipe.h"
 
 
@@ -14,7 +15,7 @@
 telemetryPipe::telemetryPipe() {
     mkfifo(myfifo_read, 0666);
     mkfifo(myfifo_write, 0666);
-    memset (fdtab, 0, sizeof(fdtab));
+  
 }
 
 void telemetryPipe:: sendState() {

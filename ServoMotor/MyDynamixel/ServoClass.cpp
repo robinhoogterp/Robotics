@@ -70,10 +70,10 @@ int Servo::Read(int address)
 // Sends reboot packet to the servo
 void Servo::Reboot(){
   std::cout << "reboot in" << std::endl;
-    int curPos = Servo::Read(36);
+   // int curPos = Servo::Read(36);
 
     //TODO misschien positie +1
-    Servo::ChangePos(curPos);
+    // Servo::ChangePos(curPos);
     int val = 1023;
     int ID      =  Servo::id;
     int length  =  0x05;
@@ -122,7 +122,7 @@ std::cout << std::endl;
     
  Servo::SendPacket(parmArr, arrSize);
       
- delay(DELAY);
+
     
  Servo::HandleError();
 
@@ -251,8 +251,7 @@ void Servo::ChangePos(int pos)
     size_t count = sizeof(instruction)/4;
     
     Servo::SendPacket(instruction, count);
-      
-    delay(DELAY);
+     
     
     Servo::HandleError();
 }

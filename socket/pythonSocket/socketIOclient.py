@@ -5,7 +5,7 @@ import cv2
 from greppelState import greppelState
 import base64
 
-cam = cv2.VideoCapture('/dev/video0')  # LINUX
+# cam = cv2.VideoCapture('/dev/video0')  # LINUX
 # cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # Windows
 sio = socketio.AsyncClient()
 encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 40]
@@ -47,8 +47,8 @@ async def send_state():
 
 # Verstuurd een camera frame naar de website
 async def send_cam():
-    status, frame = cam.read()
-    # frame = cv2.imread('test2.png')
+    # status, frame = cam.read()
+    frame = cv2.imread('test2.png')
 
     # rescale image to send
     scale_percent = 100  # percent of original size

@@ -4,36 +4,51 @@
 #include <iostream>
 #include <cstdio>
 #include <stdio.h>
+#include "Movement/Movement.h"
 
-
+//telemetrics* telemetrics::instance = 0;
 int main()
 {
 
-
+    //telemetryPipe tPipe;
     int* inputArr;
     Servo::InitPins();
     Servo::CreateConnection();
-    Servo testservo(1);
-    Servo test(2);
-    Servo test2(3);
+    Servo grijper(1);
+    Servo linkerknikpunt(2);
+    Servo rechterknikpunt(3);
     Servo armservoL(4);
     Servo armservoR(5);
     Servo stuurservo(6);
     arm arm1;
+    Movement mv;
     
-    // armservoL.ChangePos(1023);
-    // armservoR.ChangePos(0);
     
+    
+     std::cout << "Pos1:  " <<linkerknikpunt.Read(36);
+     std::cout << "Pos2:  " << rechterknikpunt.Read(36);
+
     bool connected = BTclient::init();
     bool btn2 = true;
+    mv.setup();
 
+    grijper.ChangeMovSpd(100);
+    rechterknikpunt.ChangeMovSpd(100);
+    linkerknikpunt.ChangeMovSpd(100);
+    armservoR.ChangeMovSpd(100);
+    armservoL.ChangeMovSpd(100);
+    stuurservo.ChangeMovSpd(200);
 
     while (connected)
     {
+        //tPipe.sendState();
+        std::cout << "TEST1" << std::endl;
        inputArr = BTclient::loop();
+       std::cout << "TEST2" << std::endl;
        for(int i = 0;i < 8;i++){
            std::cout << inputArr[i] << ", ";
        }    
+      
        std::cout << '\n' << '\n' << std::endl;
  
     // std::cout << "pos1" << test.Read(36);
@@ -42,51 +57,35 @@ int main()
     //    std::cout << "pos4" <<  armservoR.Read(36);
        //test2.ChangePos(0);
 
-    // check arm modus
-    if(inputArr[6] == 1){
+    // check modus
+    switch (inputArr[6])
+    {
+    case 0: // Rijden 
+    mv.receivedata(inputArr[0],inputArr[4],0);
+    std::cout << "HELP" << std::endl;
+    break;
+    case 1: // Arm
     arm1.takeinput(inputArr[0],inputArr[3]);
-        if((bool)inputArr[7]){
-            testservo.ChangePos(250);
-        }
-        else{
-            testservo.ChangePos(500);
-        }
+    if((bool)inputArr[7])
+    {
+        grijper.ChangePos(250);
     }
-    //check drive modus
-    if(inputArr[6]== 0){
-
+    else
+    {
+        grijper.ChangePos(650);
     }
-    //check tank modus
-    if(inputArr[6]== 3){
-
-    }
-    //check line dance
-    if(inputArr[6]== 2){
-
-    }
-    //check open CV modus
-    if(inputArr[6]== 4)
-    delay(200);
+    break;
+    case 2: // Linedance
+    break;
+    case 3: // Tank Besturing
+    break;
+    case 4: // OpenCV
+    break;
     
-   
-     
-    // int pos = stuurservo.Read(36);
-    // std::cout << "Starting Pos Stuur Servo "<< pos  << std::endl; 
-    // std::cout << "Speed Pos Stuur Servo " << stuurservo.Read(38) << std::endl;    
-    // std::cout << "Starting Pos Arm links: " << armservoL.Read(36) << std::endl;
-    // std::cout << "Starting Pos Arm Rechts: " << armservoR.Read(36) << std::endl;
-    //     delay(1000);
-    //     arm1.takeinput(4000,4000);
-    //     delay(500);
-
-    //     armservoL.SyncWrite(2,1023,3,0);
-    //     delay(5000);
-        
-
-    //     stuurservo.ChangePos(pos-100);
-    //     delay(5000);
-        
-      
+    default:
+        break;
+    } 
+    
 
 
 

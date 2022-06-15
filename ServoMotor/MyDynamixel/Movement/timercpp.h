@@ -5,9 +5,10 @@
 #include <atomic>
 
 class Timer {
-	std::atomic<bool> active{true};
+	
 	
     public:
+        std::atomic<bool> active{true};
         void setTimeout(auto function, int delay);
         void setInterval(auto function, int interval);
         void stop();

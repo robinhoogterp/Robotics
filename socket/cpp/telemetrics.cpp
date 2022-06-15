@@ -1,3 +1,4 @@
+#pragma once
 #include "telemetrics.h"
 
 telemetrics* telemetrics::getInstance()

@@ -66,20 +66,19 @@ void BTclient::splitdata(char base[], int size, int* fill) {
 
 int* BTclient::loop() {
       // send a message
-    if( status == 0 ) {
-        status = write(s, "hallo!", 6);
-    }
+   std::cout << "hallo" << std::endl;
     listen(s, 1);
-    
+   std::cout << "hallo2" << std::endl;
        bytes_read = read(s,buf, sizeof(buf));
+       std::cout << "hallo3" << std::endl;
     if(bytes_read > 0){
         try{
             splitdata(buf,sizeof(buf),ptr);
+            std::cout << "hallo4" << std::endl;
        
-            
         }
         catch(...){
-            std::cout<< "Help" << '\n';
+            std::cout<< "Help BUFFER" << '\n';
         }
  
         

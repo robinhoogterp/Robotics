@@ -17,7 +17,7 @@ public:
     char *myfifo_write = "/tmp/greppel_out";
     char *myfifo_read  = "/tmp/greppel_in";
 
-    struct pollfd fdtab[2];
+    
     int fd_write = open(myfifo_write, O_WRONLY);
     int fd_read  = open(myfifo_read, O_RDONLY);
     telemetryPipe();
