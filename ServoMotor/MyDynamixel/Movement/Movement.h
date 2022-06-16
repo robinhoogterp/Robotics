@@ -50,8 +50,8 @@ class Movement {
 		public:
 		void setup();
 		void updateMotor();
-		void moveStandard(double scaling, double factor, double forward_thrust, double backward_thrust , int input1, int input2);
-		void moveTank(double scaling, double factor, double left_thrust, double right_thrust , int throttle);
+		void updateTank();
+		void switchMode();
 		void receivedata(int input1, int input2, int button);
 		void updateservo(int scaler);
 };

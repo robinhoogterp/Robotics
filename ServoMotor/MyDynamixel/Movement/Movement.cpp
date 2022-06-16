@@ -1,11 +1,12 @@
 #include "Movement.h"
 using namespace std;
 Servo knik_punt(6);
-bool active = false;
+bool mode = false;
+
 		
 void Movement::setup(){
 	
-	//telemetrics* tm = telemetrics::getInstance();
+	telemetrics* tm = telemetrics::getInstance();
 	
 	// PWM
 	softPwmCreate(pwm, 0, 100);
@@ -22,7 +23,7 @@ void Movement::setup(){
 	// Motor 4
 	pinMode(pin_forward4,OUTPUT);
 	pinMode(pin_backwards4,OUTPUT);
-	t.setInterval([&]() {Movement::updateMotor();} , 100); //0.1 seconde interval
+	t.setInterval([&]() {Movement::switchMode();} , 100); //0.1 seconde interval
 
 }
 void Movement::updateservo(int scaler){
@@ -40,6 +41,17 @@ void Movement::updateservo(int scaler){
 		knik_punt.ChangePos(pos + scaler);
 	}
 }
+void Movement::switchMode()
+{
+	if (mode)
+	{
+		Movement::updateTank();
+	}
+	else
+	{
+		Movement::updateMotor();
+	}
+}
 
 void Movement::updateMotor()
 {
@@ -55,26 +67,26 @@ void Movement::updateMotor()
 			current_thrust += sqrt(forward_thrust * 0.35); // Lagere snelheid, hogere value zodat opbouw tijd korter is bij lagere snelheid en hoger bij hogere snelheid. 
 			forward_thrust = current_thrust; // Nieuwe snelheid in forward_thrust zetten
 		}
-	//telemetrics* tm = telemetrics::getInstance();
+	telemetrics* tm = telemetrics::getInstance();
 	
     digitalWrite(pin_forward1, 1);
-    //(*tm).telemetry.pf1 = 1;
+    (*tm).telemetry.pf1 = 1;
 	digitalWrite(pin_backwards1, 0);
-	//(*tm).telemetry.pb1 = 0;
+	(*tm).telemetry.pb1 = 0;
 	digitalWrite(pin_forward2, 1);
-	//(*tm).telemetry.pf2 = 1;
+	(*tm).telemetry.pf2 = 1;
 	digitalWrite(pin_backwards2, 0);
-	//(*tm).telemetry.pb2 = 0;
+	(*tm).telemetry.pb2 = 0;
     digitalWrite(pin_forward3, 1);
-    //(*tm).telemetry.pf3 = 1;
+    (*tm).telemetry.pf3 = 1;
 	digitalWrite(pin_backwards3, 0);
-	//(*tm).telemetry.pb3 = 0;
+	(*tm).telemetry.pb3 = 0;
     digitalWrite(pin_forward4, 1);
-    //(*tm).telemetry.pf4 = 1;
+    (*tm).telemetry.pf4 = 1;
 	digitalWrite(pin_backwards4, 0);
-	//(*tm).telemetry.pb4 = 0;
+	(*tm).telemetry.pb4 = 0;
 	softPwmWrite(pwm, current_thrust);
-	//(*tm).telemetry.dc = current_thrust;
+	(*tm).telemetry.dc = current_thrust;
 	
 	//TODO kan misschien weg
 	timer+=0.1;
@@ -94,24 +106,24 @@ void Movement::updateMotor()
 			current_thrust += sqrt(backward_thrust * 0.35);
 			backward_thrust = current_thrust;
 		}
-	//telemetrics* tm = telemetrics::getInstance();
+	telemetrics* tm = telemetrics::getInstance();
 	
     digitalWrite(pin_forward1, 0);
-    //(*tm).telemetry.pf1 = 0;
+    (*tm).telemetry.pf1 = 0;
 	digitalWrite(pin_backwards1, 1);
-	//(*tm).telemetry.pb1 = 1;
+	(*tm).telemetry.pb1 = 1;
 	digitalWrite(pin_forward2, 0);
-	//(*tm).telemetry.pf2 = 0;
+	(*tm).telemetry.pf2 = 0;
 	digitalWrite(pin_backwards2, 1);
-	//(*tm).telemetry.pb2 = 1;
+	(*tm).telemetry.pb2 = 1;
     digitalWrite(pin_forward3, 0);
-    //(*tm).telemetry.pf3 = 0;
+    (*tm).telemetry.pf3 = 0;
 	digitalWrite(pin_backwards3, 1);
-	//(*tm).telemetry.pb4 = 1;
+	(*tm).telemetry.pb4 = 1;
     digitalWrite(pin_forward4, 0);
-    //(*tm).telemetry.pf4 = 0;
+    (*tm).telemetry.pf4 = 0;
 	digitalWrite(pin_backwards4, 1);
-	//(*tm).telemetry.pb4 = 1;
+	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, current_thrust);
 	
 	//TODO kan misschien weg
@@ -122,39 +134,36 @@ void Movement::updateMotor()
 	} 
 	else 
 	{
-	//telemetrics* tm = telemetrics::getInstance();
+	telemetrics* tm = telemetrics::getInstance();
 	
     digitalWrite(pin_forward1, 1);
-    //(*tm).telemetry.pf1 = 1;
+    (*tm).telemetry.pf1 = 1;
 	digitalWrite(pin_backwards1, 1);
-	//(*tm).telemetry.pb1 = 1;
+	(*tm).telemetry.pb1 = 1;
 	digitalWrite(pin_forward2, 1);
-	//(*tm).telemetry.pf2 = 1;
+	(*tm).telemetry.pf2 = 1;
 	digitalWrite(pin_backwards2, 1);
-	//(*tm).telemetry.pb2 = 1;
+	(*tm).telemetry.pb2 = 1;
     digitalWrite(pin_forward3, 1);
-    //(*tm).telemetry.pf3 = 1;
+    (*tm).telemetry.pf3 = 1;
 	digitalWrite(pin_backwards3, 1);
-	//(*tm).telemetry.pb4 = 1;
+	(*tm).telemetry.pb4 = 1;
     digitalWrite(pin_forward4, 1);
-    //(*tm).telemetry.pf4 = 1;
+    (*tm).telemetry.pf4 = 1;
 	digitalWrite(pin_backwards4, 1);
-	//(*tm).telemetry.pb4 = 1;
+	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, 0);
 	current_thrust = 0;
-	//(*tm).telemetry.dc = current_thrust;
+	(*tm).telemetry.dc = current_thrust;
 	        cout << "Remmen" << endl;
 	        return;
 		}
 };
 
-/*
-void Movement::moveTank(double scaling, double factor, double left_thrust, double right_thrust , int throttle)
+
+void Movement::updateTank()
 {
-	d.setInterval([&]() //0.1 seconde interval
-		{
-	
-		if(throttle >= 2097.5)
+		if(throttle >= 2200)
 		{
 			if(current_thrust >= scaling * 100)
 			{
@@ -165,27 +174,27 @@ void Movement::moveTank(double scaling, double factor, double left_thrust, doubl
 			current_thrust += sqrt(left_thrust * 0.35);
 			left_thrust = current_thrust;
 		}
-	//telemetrics* tm = telemetrics::getInstance();
+	telemetrics* tm = telemetrics::getInstance();
 	
 	
-    digitalWrite(pin_forward1, 0);
-    //(*tm).telemetry.pf1 = pin_forward1;
-	digitalWrite(pin_backwards1, 1);
-	//(*tm).telemetry.pb1 = pin_backwards1;
-	digitalWrite(pin_forward2, 0);
-	//(*tm).telemetry.pf2 = pin_forward2;
-	digitalWrite(pin_backwards2, 1);
-	//(*tm).telemetry.pb2 = pin_backwards2;
-    digitalWrite(pin_forward3, 1);
-    //(*tm).telemetry.pf3 = pin_forward3;
-	digitalWrite(pin_backwards3, 0);
-	//(*tm).telemetry.pb3 = pin_backwards3;
-    digitalWrite(pin_forward4, 1);
-    //(*tm).telemetry.pf4 = pin_forward4;
-	digitalWrite(pin_backwards4, 0);
-	//(*tm).telemetry.pb4 = pin_backwards4;
+    digitalWrite(pin_forward1, 1);
+    (*tm).telemetry.pf1 = pin_forward1;
+	digitalWrite(pin_backwards1, 0);
+	(*tm).telemetry.pb1 = pin_backwards1;
+	digitalWrite(pin_forward2, 1);
+	(*tm).telemetry.pf2 = pin_forward2;
+	digitalWrite(pin_backwards2, 0);
+	(*tm).telemetry.pb2 = pin_backwards2;
+    digitalWrite(pin_forward3, 0);
+    (*tm).telemetry.pf3 = pin_forward3;
+	digitalWrite(pin_backwards3, 1);
+	(*tm).telemetry.pb3 = pin_backwards3;
+    digitalWrite(pin_forward4, 0);
+    (*tm).telemetry.pf4 = pin_forward4;
+	digitalWrite(pin_backwards4, 1);
+	(*tm).telemetry.pb4 = pin_backwards4;
 	softPwmWrite(pwm, current_thrust);
-	//(*tm).telemetry.dc = current_thrust;
+	(*tm).telemetry.dc = current_thrust;
 	timer+=0.1;
 	
 		cout << "Timer: " << " " << timer << " Seconden" << endl;
@@ -193,7 +202,7 @@ void Movement::moveTank(double scaling, double factor, double left_thrust, doubl
 		cout << "Throttle: " << " " << throttle << endl;
 		
 
-	} else if(throttle <= 1997.5)
+	} else if(throttle <= 1800)
 	{
 		if(current_thrust >= -scaling * 100)
 		{
@@ -202,26 +211,26 @@ void Movement::moveTank(double scaling, double factor, double left_thrust, doubl
 			current_thrust += sqrt(right_thrust * 0.35);
 			right_thrust = current_thrust;
 		}
-	//telemetrics* tm = telemetrics::getInstance();
+	telemetrics* tm = telemetrics::getInstance();
 	
-    digitalWrite(pin_forward1, 1);
-    //(*tm).telemetry.pf1 = 1;
-	digitalWrite(pin_backwards1, 0);
-	//(*tm).telemetry.pb1 = 0;
-	digitalWrite(pin_forward2, 1);
-	//(*tm).telemetry.pf2 = 1;
-	digitalWrite(pin_backwards2, 0);
-	//(*tm).telemetry.pb2 = 0;
-    digitalWrite(pin_forward3, 0);
-    //(*tm).telemetry.pf3 = 0;
-	digitalWrite(pin_backwards3, 1);
-	//(*tm).telemetry.pb3 = 1;
-    digitalWrite(pin_forward4, 0);
-    //(*tm).telemetry.pf4 = 0;
-	digitalWrite(pin_backwards4, 1);
-	//(*tm).telemetry.pb4 = 1;
+    digitalWrite(pin_forward1, 0);
+    (*tm).telemetry.pf1 = 1;
+	digitalWrite(pin_backwards1, 1);
+	(*tm).telemetry.pb1 = 0;
+	digitalWrite(pin_forward2, 0);
+	(*tm).telemetry.pf2 = 1;
+	digitalWrite(pin_backwards2, 1);
+	(*tm).telemetry.pb2 = 0;
+    digitalWrite(pin_forward3, 1);
+    (*tm).telemetry.pf3 = 0;
+	digitalWrite(pin_backwards3, 0);
+	(*tm).telemetry.pb3 = 1;
+    digitalWrite(pin_forward4, 1);
+    (*tm).telemetry.pf4 = 0;
+	digitalWrite(pin_backwards4, 0);
+	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, current_thrust);
-	//(*tm).telemetry.dc = current_thrust;
+	(*tm).telemetry.dc = current_thrust;
 	timer+=0.1;
 	
 		cout << "Timer: " << " " << timer << " Seconden" << endl;
@@ -230,46 +239,47 @@ void Movement::moveTank(double scaling, double factor, double left_thrust, doubl
 	} 
 	else 
 	{
-	//telemetrics* tm = telemetrics::getInstance();
+	telemetrics* tm = telemetrics::getInstance();
 	
     digitalWrite(pin_forward1, 1);
-    //(*tm).telemetry.pf1 = 1;
+    (*tm).telemetry.pf1 = 1;
 	digitalWrite(pin_backwards1, 1);
-	//(*tm).telemetry.pb1 = 1;
+	(*tm).telemetry.pb1 = 1;
 	digitalWrite(pin_forward2, 1);
-	//(*tm).telemetry.pf2 = 1;
+	(*tm).telemetry.pf2 = 1;
 	digitalWrite(pin_backwards2, 1);
-	//(*tm).telemetry.pb2 = 1;
+	(*tm).telemetry.pb2 = 1;
     digitalWrite(pin_forward3, 1);
-    //(*tm).telemetry.pf3 = 1;
+    (*tm).telemetry.pf3 = 1;
 	digitalWrite(pin_backwards3, 1);
-	//(*tm).telemetry.pb3 = 1;
+	(*tm).telemetry.pb3 = 1;
     digitalWrite(pin_forward4, 1);
-    //(*tm).telemetry.pf4 = 1;
+    (*tm).telemetry.pf4 = 1;
 	digitalWrite(pin_backwards4, 1);
-	//(*tm).telemetry.pb4 = 1;
+	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, 0);
 	current_thrust = 0;
-	//(*tm).telemetry.dc = current_thrust;
-	        cout << "Wachten op nieuwe input, Remmen" << endl;
+	(*tm).telemetry.dc = current_thrust;
+	        cout << "Remmen tank" << endl;
 		}
 		
-}, 100); 
-	
-    while(true);
 }
-*/
+
 void Movement::receivedata(int input1, int input2, int button){
 	if(input1 > 4095)
 		{	
 			input1 = 4095;
-		};
+		}
 		
 	if(button == 1){
-		Modus = !Modus;
-		};
+		mode = true;
+		}
+		else
+		{
+			mode = false; 
+			}
 	
-	if(Modus == true){
+	if(mode == false){
 	throttle = input1;
 	scaling = (input1 / 4095.0) / 0.5 - 1.0; // Joystick value bruikbaar maken, getal van 0 tot 1
 	factor = scaling * 100 / 87.4427191; // Scaling kleiner maken, voor een goede versnelling
@@ -282,19 +292,12 @@ void Movement::receivedata(int input1, int input2, int button){
 		updateservo(50);
 	} 
 
-
-	//moveStandard(scaling, factor, forward_thrust , backward_thrust , input1, input2);	
-
 } else {
-	/*
-	setup();
 	scaling = (input2 / 4095.0) / 0.5 - 1.0;
 	factor = scaling * 100 / 87.4427191;
 	left_thrust = factor * scaling * 100 * 1.5;
 	right_thrust = -factor * -scaling * 100 * 1.5;
-	moveTank(scaling, factor, left_thrust , right_thrust , input2);
-	*/
-	cout <<"ELSE" << endl;
+	throttle = input2;
 	}
 }
 

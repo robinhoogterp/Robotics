@@ -1,4 +1,3 @@
-
 #include "telemetryPipe.h"
 
 
@@ -15,7 +14,6 @@
 telemetryPipe::telemetryPipe() {
     mkfifo(myfifo_read, 0666);
     mkfifo(myfifo_write, 0666);
-  
 }
 
 void telemetryPipe:: sendState() {
@@ -26,17 +24,23 @@ void telemetryPipe:: sendState() {
     size_t chars_read;
     uint64_t start = getTimestamp();
 
-    std::cout << "write integer " << fcntl(fd_write, F_GETFD) << std::endl;
+    //std::cout << "write integer " << fcntl(fd_write, F_GETFD) << std::endl;
+
     writeStringToPipe(fd_write, t_json_char);
+
+
 
     uint64_t ended = getTimestamp();
     std::cout << "Sending finished in " << (ended - start) << "ms" << std::endl;
 
     char answer[512];
-    std::cout << "read integer " << fcntl(fd_read, F_GETFD) << std::endl;
-    readStringFromPipe(answer, fd_read);
+    //std::cout << "read integer " << fcntl(fd_read, F_GETFD) << std::endl;
 
-    std::cout << answer << std::endl;
+
+    readStringFromPipe(answer, fd_read);
+    (*tel).xPos = std::stoi(answer);
+    std::cout << "Singleton xPos " << (*tel).xPos << std::endl;
+
 }
 
 void telemetryPipe::printDCS() {
@@ -136,7 +140,7 @@ unsigned long int telemetryPipe::readLengthIndicatorFromPipe(int fd){
 
     read(fd, hexlen, 8);
     hexlen[8]='\0';
-    std::cout << "hexlen " << hexlen << " -------------" << std::endl;
+//    std::cout << "hexlen " << hexlen << " -------------" << std::endl;
 
 //    try {
         return std::stoi(hexlen, 0,  16);
@@ -181,4 +185,3 @@ int telemetryPipe::readStringFromPipe(char *buffer, int fd) {
 
     return nrOfBytesToRead;
 }//readStringFromPipe
-

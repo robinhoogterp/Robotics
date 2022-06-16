@@ -21,7 +21,6 @@ public:
 
         JS_OBJ(dc, pf1, pf2, pf3, pf4, pb1, pb2, pb3, pb4);
     } telemetry;
+    int xPos = -1;
     static telemetrics* getInstance();
 };
-
-

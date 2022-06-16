@@ -9,8 +9,8 @@ Repeatedly received a file through a PIPE (see mkfifo), followed by an instructi
 measured transfer times: 1.9GB in 2945ms (1853882368 / 2945 = 629501 bytes/ms (@buffer size = 2048 bytes)
 """
 # indicate the absolute locations of the pipe (notice that the OUT-pipe is used for reading in this program)
-path_read = "/tmp/greppel_out"
-path_write = "/tmp/greppel_in"
+path_read = "/home/greppel/greppel_out"
+path_write = "/home/greppel/greppel_in"
 
 fd_read = os.open(path_read, os.O_RDONLY)
 fd_write = os.open(path_write, os.O_WRONLY)
@@ -19,18 +19,22 @@ fd_write = os.open(path_write, os.O_WRONLY)
 class SocketConnector:
     def __init__(self):
         self.json = ""
+        self.xPos = -1
 
     def getState(self):
         try:
+            print(self.xPos)
             self.json = readStringFromPipe(fd_read)
-            writeStringToPipe(fd_write, "OKE")
+            writeStringToPipe(fd_write, str(self.xPos))
+            self.xPos = -1
         except:
             print("lmao")
 
     def getJson(self):
         return self.json
 
-
+    def setXPos(self, xpos):
+        self.xPos = xpos
 def open():
     # Open a pipe for reading and writing
     fd_read = os.open(path_read, os.O_RDONLY)

@@ -6,11 +6,11 @@
 #include <stdio.h>
 #include "Movement/Movement.h"
 
-//telemetrics* telemetrics::instance = 0;
+telemetrics* telemetrics::instance = 0;
 int main()
 {
 
-    //telemetryPipe tPipe;
+    telemetryPipe tPipe;
     int* inputArr;
     Servo::InitPins();
     Servo::CreateConnection();
@@ -41,7 +41,7 @@ int main()
 
     while (connected)
     {
-        //tPipe.sendState();
+        tPipe.sendState();
         std::cout << "TEST1" << std::endl;
        inputArr = BTclient::loop();
        std::cout << "TEST2" << std::endl;
@@ -78,12 +78,22 @@ int main()
     case 2: // Linedance
     break;
     case 3: // Tank Besturing
+    mv.receivedata(inputArr[0],inputArr[4],1);
     break;
     case 4: // OpenCV
+    telemetrics* tm = telemetrics::getInstance();
+    int x = (*tm).xPos;
+    if (x == -1)
+    { 
+        }
+        else if (x > 340)
+        { mv.receivedata(2000,4000,0);
+            }
+            else if (x < 320)
+        { mv.receivedata(2000,1000,0);
+            }
     break;
-    
-    default:
-        break;
+
     } 
     
 
@@ -93,5 +103,6 @@ int main()
             
          
     }
+ 
     
 }
