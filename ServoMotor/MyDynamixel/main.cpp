@@ -25,8 +25,8 @@ int main()
     
     
     
-     std::cout << "Pos1:  " <<linkerknikpunt.Read(36);
-     std::cout << "Pos2:  " << rechterknikpunt.Read(36);
+     std::cout << "Pos1:  " <<linkerknikpunt.Read(36) << std::endl;
+     std::cout << "Pos2:  " << rechterknikpunt.Read(36) << std::endl;
 
     bool connected = BTclient::init();
     bool btn2 = true;
@@ -43,10 +43,10 @@ int main()
     {
         tPipe.sendState();
         std::cout << "TEST1" << std::endl;
-       inputArr = BTclient::loop();
-       std::cout << "TEST2" << std::endl;
-       for(int i = 0;i < 8;i++){
-           std::cout << inputArr[i] << ", ";
+        inputArr = BTclient::loop();
+        std::cout << "TEST2" << std::endl;
+        for(int i = 0;i < 8;i++){
+        std::cout << inputArr[i] << ", ";
        }    
       
        std::cout << '\n' << '\n' << std::endl;

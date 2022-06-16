@@ -2,6 +2,11 @@
 using namespace std;
 Servo knik_punt(6);
 bool mode = false;
+const int MAX = 900;
+const int MIN = 300;
+const int TURN_SPEED = 50;
+int pos = knik_punt.Read(36);
+
 
 		
 void Movement::setup(){
@@ -26,19 +31,29 @@ void Movement::setup(){
 	t.setInterval([&]() {Movement::switchMode();} , 100); //0.1 seconde interval
 
 }
-void Movement::updateservo(int scaler){
-	int pos = knik_punt.Read(36);
+void Movement::updateservo(int scaler)
+{
 	
 	cout << "Pos:  "<< pos << endl;
-	if (pos < 300 && scaler < 0) {
+	if (pos < MIN && scaler < 0) 
+	{
 		cout << "Te laag" << endl;
+		pos = MIN;
+		knik_punt.ChangePos(pos);
 		
-	} else if(pos > 900 && scaler > 0) {	
-				cout << "Te Hoog" << endl;
+	} 
+	else if(pos > MAX && scaler > 0) 
+	{	
+		cout << "Te Hoog" << endl;
+		pos = MAX;
+		knik_punt.ChangePos(pos);
 
-	} else {
-				cout << "Goed" << endl;
-		knik_punt.ChangePos(pos + scaler);
+	} 
+	else 
+	{
+		cout << "Goed" << endl;
+		pos = pos + scaler;
+		knik_punt.ChangePos(pos);
 	}
 }
 void Movement::switchMode()
@@ -286,10 +301,10 @@ void Movement::receivedata(int input1, int input2, int button){
 	forward_thrust = factor * scaling * 100 * 1.5; // Forward_thrust bepalen
 	backward_thrust = -factor * -scaling * 100 * 1.5; // Backward_thrust bepalen
 	if(input2 > 3000) {
-		updateservo(-50);
+		updateservo(-TURN_SPEED);
 	}
 	 else if(input2 < 2000){
-		updateservo(50);
+		updateservo(TURN_SPEED);
 	} 
 
 } else {
