@@ -2,8 +2,8 @@
 using namespace std;
 Servo knik_punt(6);
 bool mode = false;
-const int MAX = 900;
-const int MIN = 300;
+const int MAX = 1000;
+const int MIN = 200;
 const int TURN_SPEED = 50;
 int pos = knik_punt.Read(36);
 
@@ -33,25 +33,20 @@ void Movement::setup(){
 }
 void Movement::updateservo(int scaler)
 {
-	
-	cout << "Pos:  "<< pos << endl;
 	if (pos < MIN && scaler < 0) 
 	{
-		cout << "Te laag" << endl;
 		pos = MIN;
 		knik_punt.ChangePos(pos);
 		
 	} 
 	else if(pos > MAX && scaler > 0) 
 	{	
-		cout << "Te Hoog" << endl;
 		pos = MAX;
 		knik_punt.ChangePos(pos);
 
 	} 
 	else 
 	{
-		cout << "Goed" << endl;
 		pos = pos + scaler;
 		knik_punt.ChangePos(pos);
 	}
@@ -102,14 +97,6 @@ void Movement::updateMotor()
 	(*tm).telemetry.pb4 = 0;
 	softPwmWrite(pwm, current_thrust);
 	(*tm).telemetry.dc = current_thrust;
-	
-	//TODO kan misschien weg
-	timer+=0.1;
-	
-		cout << "Timer: " << " " << timer << " Seconden" << endl;
-		cout << "Snelheid: " << " " << current_thrust << endl;
-		cout << "Throttle: " << " " << throttle << endl;
-		
 
 	} else if(throttle <= 1800)
 	{
@@ -141,11 +128,6 @@ void Movement::updateMotor()
 	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, current_thrust);
 	
-	//TODO kan misschien weg
-	timer+=0.1;
-		cout << "Timer: " << " " << timer << " Seconden" << endl;
-		cout << "Snelheid: " << " " << current_thrust << endl;
-		cout << "Throttle: " << " " << throttle << endl;
 	} 
 	else 
 	{
@@ -170,7 +152,7 @@ void Movement::updateMotor()
 	softPwmWrite(pwm, 0);
 	current_thrust = 0;
 	(*tm).telemetry.dc = current_thrust;
-	        cout << "Remmen" << endl;
+	        
 	        return;
 		}
 };
@@ -210,11 +192,6 @@ void Movement::updateTank()
 	(*tm).telemetry.pb4 = pin_backwards4;
 	softPwmWrite(pwm, current_thrust);
 	(*tm).telemetry.dc = current_thrust;
-	timer+=0.1;
-	
-		cout << "Timer: " << " " << timer << " Seconden" << endl;
-		cout << "Snelheid: " << " " << current_thrust << endl;
-		cout << "Throttle: " << " " << throttle << endl;
 		
 
 	} else if(throttle <= 1800)
@@ -246,11 +223,7 @@ void Movement::updateTank()
 	(*tm).telemetry.pb4 = 1;
 	softPwmWrite(pwm, current_thrust);
 	(*tm).telemetry.dc = current_thrust;
-	timer+=0.1;
-	
-		cout << "Timer: " << " " << timer << " Seconden" << endl;
-		cout << "Snelheid: " << " " << current_thrust << endl;
-		cout << "Throttle: " << " " << throttle << endl;
+
 	} 
 	else 
 	{
@@ -275,7 +248,7 @@ void Movement::updateTank()
 	softPwmWrite(pwm, 0);
 	current_thrust = 0;
 	(*tm).telemetry.dc = current_thrust;
-	        cout << "Remmen tank" << endl;
+	        
 		}
 		
 }
@@ -285,9 +258,9 @@ void Movement::receivedata(int input1, int input2, int button){
 		{	
 			input1 = 4095;
 		}
-		
 	if(button == 1){
 		mode = true;
+		
 		}
 		else
 		{
@@ -298,12 +271,12 @@ void Movement::receivedata(int input1, int input2, int button){
 	throttle = input1;
 	scaling = (input1 / 4095.0) / 0.5 - 1.0; // Joystick value bruikbaar maken, getal van 0 tot 1
 	factor = scaling * 100 / 87.4427191; // Scaling kleiner maken, voor een goede versnelling
-	forward_thrust = factor * scaling * 100 * 1.5; // Forward_thrust bepalen
-	backward_thrust = -factor * -scaling * 100 * 1.5; // Backward_thrust bepalen
+	forward_thrust = factor * scaling * 100 * 0.8; // Forward_thrust bepalen
+	backward_thrust = -factor * -scaling * 100 * 0.8; // Backward_thrust bepalen
 	if(input2 > 3000) {
 		updateservo(-TURN_SPEED);
 	}
-	 else if(input2 < 2000){
+	 else if(input2 < 1500){
 		updateservo(TURN_SPEED);
 	} 
 

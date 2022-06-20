@@ -5,8 +5,10 @@
 #include <cstdio>
 #include <stdio.h>
 #include "Movement/Movement.h"
+#include "gewichtsensor/gewichtsensor.h"
 
 telemetrics* telemetrics::instance = 0;
+float gewicht;
 int main()
 {
 
@@ -21,9 +23,9 @@ int main()
     Servo armservoR(5);
     Servo stuurservo(6);
     arm arm1;
+    gewichtsensor sensor;
     Movement mv;
-    
-    
+    bool first = true;
     
      std::cout << "Pos1:  " <<linkerknikpunt.Read(36) << std::endl;
      std::cout << "Pos2:  " << rechterknikpunt.Read(36) << std::endl;
@@ -32,43 +34,47 @@ int main()
     bool btn2 = true;
     mv.setup();
 
-    grijper.ChangeMovSpd(100);
-    rechterknikpunt.ChangeMovSpd(100);
-    linkerknikpunt.ChangeMovSpd(100);
-    armservoR.ChangeMovSpd(100);
-    armservoL.ChangeMovSpd(100);
-    stuurservo.ChangeMovSpd(200);
+    grijper.ChangeMovSpd(300);
+    rechterknikpunt.ChangeMovSpd(80);
+    linkerknikpunt.ChangeMovSpd(80);
+    armservoR.ChangeMovSpd(50);
+    armservoL.ChangeMovSpd(50);
+    stuurservo.ChangeMovSpd(150);
 
     while (connected)
     {
         tPipe.sendState();
-        std::cout << "TEST1" << std::endl;
         inputArr = BTclient::loop();
-        std::cout << "TEST2" << std::endl;
         for(int i = 0;i < 8;i++){
         std::cout << inputArr[i] << ", ";
        }    
       
        std::cout << '\n' << '\n' << std::endl;
- 
-    // std::cout << "pos1" << test.Read(36);
-    //   std::cout << "pos2" << test2.Read(36);
-    //    std::cout << "pos3" << armservoL.Read(36);
-    //    std::cout << "pos4" <<  armservoR.Read(36);
-       //test2.ChangePos(0);
 
     // check modus
     switch (inputArr[6])
     {
     case 0: // Rijden 
+    first = true;
     mv.receivedata(inputArr[0],inputArr[4],0);
-    std::cout << "HELP" << std::endl;
+  
+    
     break;
     case 1: // Arm
+    if(first){
+        std::cout << "Grijper Pos: " << grijper.Read(36) << std::endl;
+        std::cout << "LinkerKnik Pos: " << linkerknikpunt.Read(36) << std::endl;
+        std::cout << "RechterKnik Pos: " << rechterknikpunt.Read(36) << std::endl;
+        std::cout << "ArmLinks Pos: " << armservoL.Read(36) << std::endl;
+        std::cout << "ArmRechts Pos: " << armservoR.Read(36) << std::endl;
+        std::cout << "StuurServo Pos: " << stuurservo.Read(36) << std::endl;
+        first = false;
+    }
+
     arm1.takeinput(inputArr[0],inputArr[3]);
     if((bool)inputArr[7])
     {
-        grijper.ChangePos(250);
+        grijper.ChangePos(230);
     }
     else
     {
@@ -76,11 +82,20 @@ int main()
     }
     break;
     case 2: // Linedance
+        first = true;
+        gewicht = sensor.sample();
+        std::cout << gewicht << std::endl;
+        std::cout << "Eind Gewicht" << std::endl;
+        delay(1000);
+        
     break;
     case 3: // Tank Besturing
-    mv.receivedata(inputArr[0],inputArr[4],1);
+        first = true;
+        mv.receivedata(inputArr[0],inputArr[4],1);
+      
     break;
     case 4: // OpenCV
+    first = true;
     telemetrics* tm = telemetrics::getInstance();
     int x = (*tm).xPos;
     if (x == -1)
@@ -92,6 +107,7 @@ int main()
             else if (x < 320)
         { mv.receivedata(2000,1000,0);
             }
+        
     break;
 
     } 

@@ -70,10 +70,10 @@ int Servo::Read(int address)
 // Sends reboot packet to the servo
 void Servo::Reboot(){
   std::cout << "reboot in" << std::endl;
-   // int curPos = Servo::Read(36);
+    int curPos = Servo::Read(36);
 
     //TODO misschien positie +1
-    // Servo::ChangePos(curPos);
+    Servo::ChangePos(curPos);
     int val = 1023;
     int ID      =  Servo::id;
     int length  =  0x05;
@@ -136,10 +136,10 @@ int Servo::HandleError()
 {
   delay(DELAY);
   int count = serialDataAvail(fs);
- 
+  std::cout << "Count" << count << std::endl;
   char a;
-  if(count == 0){
-    std::cout << "No Data  " << std::endl;
+  if(count < 5){
+    std::cout << "No Usefull Data  " << std::endl;
     return 0;
   }
   serialGetchar(fs);
@@ -168,7 +168,7 @@ int Servo::HandleError()
    if(a >> 5 & 1){
     std::cout << "Overload Error" << std::endl;
     
-   // Servo::Reboot();
+    Servo::Reboot();
   }
    if(a >> 6 & 1){
     std::cout << "Instruction Error" << '\n';

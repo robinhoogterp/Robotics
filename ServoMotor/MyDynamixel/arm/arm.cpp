@@ -6,7 +6,7 @@ Servo Links2(4);
 Servo Rechts2(5);
 const int MAX = 1020;
 const int MIN = 0;
-const int SCALER = 25;
+const int SCALER = 35;
 
 arm::arm() {
    range = 4095;

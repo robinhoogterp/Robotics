@@ -1,12 +1,12 @@
 #include "gewichtsensor.h"
 #include <iostream>
-unsigned long x = 0, y = 0;
-unsigned long dataArray[10];
-int fs = 0;
-const int PIN_IN = 27;
-const int PIN_OUT = 22;
-const int Base = 0;
-const float slope = 0;
+int x = 0, y = 0;
+float dataArray[10];
+//int fs = 0;
+const int PIN_IN = 22;
+const int PIN_OUT = 27;
+const int Base = 650;
+const float slope = 0.00022779;
 
 
 gewichtsensor::gewichtsensor() {
@@ -18,47 +18,55 @@ void gewichtsensor::initPins() {
     pinMode(PIN_OUT, OUTPUT);
 
 }
-void gewichtsensor::sample() {
+float gewichtsensor::sample() {
     for (int j = 0; j < 10; j++)
     {
         digitalWrite(PIN_OUT, LOW);
-        while (digitalRead(PIN_IN) != LOW)
-            ;
+        std::cout << "HALLO???"  << std::endl;
+        delay(1000);
+        while (digitalRead(PIN_IN) != HIGH)
         {
+                    std::cout << "BoNJOUR???"  << std::endl;
             for (int i = 0; i < 24; i++)  //read 24-bit data from HX711
             {
                 clk();     
-                bitWrite(x, 0, digitalRead(PIN_IN));
+                //delayMicroseconds(1);
+                //bitWrite(x, 0, digitalRead(PIN_IN));
+                x += digitalRead(PIN_IN);
+                //std::cout << "XWAARDE" << x << std::endl;
+                //std::cout << "I = " << i << std::endl;
                 x = x << 1;
             }
             clk();  //25th pulse
             
             y = x;
             x = 0;
-            delay(1000);
+            
+            break;
         }
         dataArray[j] = y;
     }
 
  
-    unsigned long sum = 0;
+    float sum = -1;
 
-    for (j = 0; j < 10; j++)
+    for (int j = 0; j < 10; j++)
     {
         sum += dataArray[j];
     }
     
     sum = sum / 10;
     std::cout << "gemiddelde waarde =" << sum << std::endl;
-    //float calcSlope = (993 - Base)/ sum;
-    //float Weight = (slope * sum) + Base;
-    //std::cout << calcSlope << " slope" << std::endl;
-    //std::cout << Weight << " gram" << std::endl;
+    float Weight = slope * (sum - Base);
+    std::cout << Weight << " gram" << std::endl;
+    return sum;
 }
 
 void gewichtsensor::clk()
 {
     digitalWrite(PIN_OUT, HIGH);
+    delayMicroseconds(1);
     digitalWrite(PIN_OUT, LOW);
+    delayMicroseconds(1);
 }
-}
+

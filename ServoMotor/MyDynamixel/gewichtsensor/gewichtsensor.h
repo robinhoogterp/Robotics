@@ -3,8 +3,10 @@
 
 class gewichtsensor
 {
+	public:
+	gewichtsensor();
 	void initPins();
-	void sample();
+	float sample();
 	void clk();
 };
 
