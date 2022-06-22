@@ -3,10 +3,11 @@ using namespace std;
 Servo knik_punt(6);
 bool mode = false;
 const int MAX = 1000;
-const int MIN = 200;
+const int MIN = 50;
 const int TURN_SPEED = 50;
 int pos = knik_punt.Read(36);
-
+const int MAXSPEED = 80;
+const int MAXSPEED2 = 40;
 
 		
 void Movement::setup(){
@@ -67,10 +68,10 @@ void Movement::updateMotor()
 {
 	if(throttle >= 2200)
 		{
-			if(current_thrust >= scaling * 100) // Doelsnelheid bereikt
+			if(current_thrust >= scaling * MAXSPEED) // Doelsnelheid bereikt
 			{
 				// TODO misschien weg.
-				current_thrust = scaling * 100; // Maximaliseren op doelsnelheid
+				current_thrust = scaling * MAXSPEED; // Maximaliseren op doelsnelheid
 				return;
 		} else {
 			
@@ -100,9 +101,9 @@ void Movement::updateMotor()
 
 	} else if(throttle <= 1800)
 	{
-		if(current_thrust >= -scaling * 100)
+		if(current_thrust >= -scaling * MAXSPEED)
 		{
-			current_thrust = -scaling * 100;
+			current_thrust = -scaling * MAXSPEED;
 	        return;
 		} else {
 			current_thrust += sqrt(backward_thrust * 0.35);
@@ -162,9 +163,9 @@ void Movement::updateTank()
 {
 		if(throttle >= 2200)
 		{
-			if(current_thrust >= scaling * 100)
+			if(current_thrust >= scaling * MAXSPEED2)
 			{
-				current_thrust = scaling * 100;
+				current_thrust = scaling * MAXSPEED2;
 				return;
 		} else {
 			
@@ -196,9 +197,9 @@ void Movement::updateTank()
 
 	} else if(throttle <= 1800)
 	{
-		if(current_thrust >= -scaling * 100)
+		if(current_thrust >= -scaling * MAXSPEED2)
 		{
-			current_thrust = -scaling * 100;
+			current_thrust = -scaling * MAXSPEED2;
 		} else {
 			current_thrust += sqrt(right_thrust * 0.35);
 			right_thrust = current_thrust;
@@ -271,8 +272,8 @@ void Movement::receivedata(int input1, int input2, int button){
 	throttle = input1;
 	scaling = (input1 / 4095.0) / 0.5 - 1.0; // Joystick value bruikbaar maken, getal van 0 tot 1
 	factor = scaling * 100 / 87.4427191; // Scaling kleiner maken, voor een goede versnelling
-	forward_thrust = factor * scaling * 100 * 0.8; // Forward_thrust bepalen
-	backward_thrust = -factor * -scaling * 100 * 0.8; // Backward_thrust bepalen
+	forward_thrust = factor * scaling * 100 * 1; // Forward_thrust bepalen
+	backward_thrust = -factor * -scaling * 100 * 1; // Backward_thrust bepalen
 	if(input2 > 3000) {
 		updateservo(-TURN_SPEED);
 	}
@@ -283,8 +284,8 @@ void Movement::receivedata(int input1, int input2, int button){
 } else {
 	scaling = (input2 / 4095.0) / 0.5 - 1.0;
 	factor = scaling * 100 / 87.4427191;
-	left_thrust = factor * scaling * 100 * 1.5;
-	right_thrust = -factor * -scaling * 100 * 1.5;
+	left_thrust = factor * scaling * 100 * 2;
+	right_thrust = -factor * -scaling * 100 * 2;
 	throttle = input2;
 	}
 }

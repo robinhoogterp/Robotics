@@ -5,8 +5,8 @@ float dataArray[10];
 //int fs = 0;
 const int PIN_IN = 22;
 const int PIN_OUT = 27;
-const int Base = 650;
-const float slope = 0.00022779;
+const int Base = 1916410;
+const float slope = 0.000229075;
 
 
 gewichtsensor::gewichtsensor() {
@@ -19,14 +19,15 @@ void gewichtsensor::initPins() {
 
 }
 float gewichtsensor::sample() {
+    
     for (int j = 0; j < 10; j++)
     {
         digitalWrite(PIN_OUT, LOW);
-        std::cout << "HALLO???"  << std::endl;
+        std::cout << "Meting: "  << j <<std::endl;
         delay(1000);
         while (digitalRead(PIN_IN) != HIGH)
         {
-                    std::cout << "BoNJOUR???"  << std::endl;
+            
             for (int i = 0; i < 24; i++)  //read 24-bit data from HX711
             {
                 clk();     

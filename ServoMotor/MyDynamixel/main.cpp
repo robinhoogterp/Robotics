@@ -11,7 +11,7 @@ telemetrics* telemetrics::instance = 0;
 float gewicht;
 int main()
 {
-
+    int prevpos = 330;
     telemetryPipe tPipe;
     int* inputArr;
     Servo::InitPins();
@@ -74,7 +74,7 @@ int main()
     arm1.takeinput(inputArr[0],inputArr[3]);
     if((bool)inputArr[7])
     {
-        grijper.ChangePos(230);
+        grijper.ChangePos(300);
     }
     else
     {
@@ -86,7 +86,6 @@ int main()
         gewicht = sensor.sample();
         std::cout << gewicht << std::endl;
         std::cout << "Eind Gewicht" << std::endl;
-        delay(1000);
         
     break;
     case 3: // Tank Besturing
@@ -101,11 +100,14 @@ int main()
     if (x == -1)
     { 
         }
-        else if (x > 340)
+        else if (prevpos < x)
         { mv.receivedata(2000,4000,0);
+            prevpos = x;
             }
-            else if (x < 320)
+            else if (prevpos > x)
+            
         { mv.receivedata(2000,1000,0);
+              prevpos = x;
             }
         
     break;
